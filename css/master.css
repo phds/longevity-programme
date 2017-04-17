@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('../fonts/RobotoMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-BlackItalic.ttf');
+}
+
+html, body {
+  height: 100%;
+  background-color: rgb(164, 175, 186);
+  user-select: none;
+  cursor: default;
+}
+
+
+.container {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary {
+  color: rgb(25, 1, 218);
+  font-size: 60pt;
+  font-family: 'Rubik', monospace;
+  text-align: center;
+
+  display: flex;
+  width: 100%;
+  height: 60%;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 20%;
+
+}
+
+.primary > .text{
+  border-bottom: 4pt solid rgb(255,40,2);
+  padding-bottom: 8px;
+}
+
+.task {
+  font-size: 15pt;
+  font-family: 'Roboto Mono', monospace;
+  border: dotted 2pt red;
+  padding: 13px 16px;
+  height: 400px;
+  width: 600px;
+}
+
+.task > .terminal {
+  text-align: left;
+  line-height: 30pt;
+}
+
+.task > .title {
+  display: inline-block;
+}
+
+.secondary {
+  color: rgb(255,40,2);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12pt;
+  display: flex;
+  width: 100%;
+  height: 30%;
+  align-items: center;
+  justify-content: center;
+}

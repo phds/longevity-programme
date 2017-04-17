@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DATE</title>
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="primary">
+        <div class="task">
+          <span class="title">Enter DD/MM of your birth date</span>
+          <div class="body">
+            <input id="date" type="text" placeholder="DD/MM" autofocus="">
+          </div>
+        </div>
+      </div>
+      <div class="secondary">
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      let el = document.getElementById('date');
+      el.onkeypress = function(e){
+
+        if(e.key < 0 || e.key > 9 || el.value.length > 4){
+          e.preventDefault();
+        }
+
+        if(el.value.length === 2){
+          //find out how to append text to field
+        }
+
+        let secondary = document.getElementsByClassName('secondary')[0];
+        if(el.value.length === 5){
+
+          secondary.innerHTML = 'PRESS ANY KEY TO CONTINUE';
+          e.preventDefault();
+        }
+        else {
+          secondary.innerHTML = '';
+        }
+      }
+    </script>
+  </body>
+</html>
