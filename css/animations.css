@@ -1,0 +1,20 @@
+@keyframes fadeIn{
+  from {
+     opacity:0;
+     bottom: 25%;
+  } to {
+     opacity:1;
+     bottom: 22%;
+  }
+}
+
+.fade-in {
+	opacity:0;  /* make things invisible upon start */
+	animation:fadeIn ease-in 1;
+	animation-fill-mode:forwards;
+	animation-duration:1s;
+}
+
+.text.fade-in{
+  animation-delay: 0.7s;
+}

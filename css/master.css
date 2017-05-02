@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: 'Roboto Mono Light';
+  src: url('../fonts/RobotoMono-Light.ttf');
+}
+
+@font-face {
   font-family: 'Rubik';
   src: url('../fonts/Rubik-BlackItalic.ttf');
 }
@@ -15,6 +20,7 @@ html, body {
   cursor: default;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 
@@ -53,25 +59,26 @@ html, body {
 }
 
 .task {
-  border: dotted 3px #FF441D;
+  border: solid 3px #FF441D;
   padding: 13px 16px;
   min-height: 165px;
   width: 850px;
   overflow: auto;
   position: absolute;
-  bottom: 20%;
+  bottom: 10%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
 }
 
-.task > .terminal {
+.task > .message {
   line-height: 30pt;
-  font-size: 15pt;
-  font-family: 'Roboto Mono', monospace;
+  font-size: 13pt;
+  font-family: 'Roboto Mono Light', monospace;
   color: #DCDCEA;
   text-align: center;
+  display: inline-block;
 }
 
 .task > .title {
@@ -85,8 +92,8 @@ html, body {
 }
 
 .task .title span {
-  font-size: 15pt;
-  font-family: 'Roboto Mono', monospace;
+  font-size: 13pt;
+  font-family: 'Roboto Mono Light', monospace;
 }
 
 .task > .body {
@@ -117,4 +124,12 @@ html, body {
 .secondary > span.show {
   opacity: 1;
   transition: opacity 0.5s;
+}
+
+.secondary > span.initial {
+  opacity: 1;
+}
+
+.hide{
+  opacity: 0!important;
 }

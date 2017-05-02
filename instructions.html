@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>INSTRUCTIONS</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/typed.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="primary">
+        <div class="task">
+          <div class="message">
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div class="secondary">
+        <span class="">+++ PRESS ENTER TO CONTINUE +++</span>
+      </div>
+    </div>
+    <script src="js/main.js" charset="utf-8"></script>
+    <script src="js/typed.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var str = 'Follow and answer the next 5 questions.<br/>Use the keypad and mouse to answer the randomly generated queries.';
+      document.addEventListener("DOMContentLoaded", function(event) {
+
+        let secondaryMessage = document.querySelector('.secondary>span');
+        type('.message>span', str, function(){
+          secondaryMessage.classList.add('show');
+          setEnterAsNextPage('task1.html');
+        })
+      });
+    </script>
+  </body>
+</html>

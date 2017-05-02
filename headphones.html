@@ -4,37 +4,32 @@
     <meta charset="utf-8">
     <title>HEADPHONES</title>
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/animations.css">
   </head>
   <body>
     <div class="container">
       <div class="primary">
-        <span class="text">PLEASE PUT ON<br />THE HEADPHONES</span>
+        <span class="text fade-in">PLEASE PUT ON<br />THE HEADPHONES</span>
       </div>
       <div class="secondary">
-        <span class="show">+++ PRESS ENTER TO CONTINUE +++</span>
+        <span>+++ PRESS ENTER TO CONTINUE +++</span>
       </div>
     </div>
     <script src="js/html2canvas.js" charset="utf-8"></script>
     <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
     <script src="js/glitch.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
-      $(document).ready(function(){
-        var content = $("<div />").append($(".container").clone()).html();
-        setInterval(function(){
-          setTimeout(function(){
-            $(".container").glitch();
-            setTimeout(function(){
-              $('canvas').remove();
-              $('body').prepend(content);
-            }, 400)
-          }, Math.floor(Math.random() * (1300 - 200 + 1)) + 200)
-        }, 1500)
+      setTimeout(function(){
+        document.querySelector('.primary>.text').classList.remove('fade-in');
+        document.querySelector('.primary>.text').classList.add('initial');
+        document.querySelector('.primary>.text').classList.remove('show');
 
-
-      })
-      document.onkeypress = function(e){
-        window.location.href = 'terminal.html'
-      }
+        setGlitching();
+      }, 5000);
+      setTimeout(function(){
+        setEnterAsNextPage('instructions.html');
+      }, 3000)
     </script>
   </body>
 </html>
