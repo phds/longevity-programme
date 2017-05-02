@@ -27,10 +27,7 @@ html, body {
 }
 
 .primary {
-  color: #DCDCEA;
-  font-size: 60pt;
-  font-family: 'Rubik', monospace;
-  text-align: center;
+
 
   display: flex;
   width: 100%;
@@ -44,6 +41,11 @@ html, body {
 }
 
 .primary > .text{
+  color: #DCDCEA;
+  font-size: 60pt;
+  font-family: 'Rubik', monospace;
+  text-align: center;
+
   border-bottom: 4pt solid #FF441D;
   padding-bottom: 8px;
   position: absolute;
@@ -51,8 +53,6 @@ html, body {
 }
 
 .task {
-  font-size: 15pt;
-  font-family: 'Roboto Mono', monospace;
   border: dotted 3px #FF441D;
   padding: 13px 16px;
   min-height: 165px;
@@ -61,6 +61,7 @@ html, body {
   position: absolute;
   bottom: 20%;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
 }
@@ -70,16 +71,46 @@ html, body {
 }
 
 .task > .title {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+  color: #DCDCEA;
+  padding-top: 40px;
+}
+
+.task .title span {
+  font-size: 15pt;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.task > .body {
+  width: 35%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .secondary {
-  color: rgb(255,40,2);
-  font-family: 'Roboto Mono', monospace;
-  font-size: 12pt;
   display: flex;
   width: 100%;
   height: 30%;
   align-items: center;
   justify-content: center;
+  padding-top: 10px;
+}
+
+.secondary span {
+  color: rgb(255,40,2);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12pt;
+  transition: opacity 0.5s;
+  opacity:0;
+}
+
+.secondary > span.show {
+  opacity: 1;
+  transition: opacity 0.5s;
 }

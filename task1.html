@@ -4,41 +4,56 @@
     <meta charset="utf-8">
     <title>DATE</title>
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/madoka.css">
   </head>
   <body>
     <div class="container">
       <div class="primary">
         <div class="task">
-          <span class="title">Enter DD/MM of your birth date</span>
+          <div class="title">
+            <span>Enter DD/MM of your birth date_</span>
+          </div>
           <div class="body">
-            <input id="date" type="text" placeholder="DD/MM" autofocus="">
+            <!-- <input id="date" type="text" placeholder="DD/MM" autofocus=""> -->
+            <span class="input">
+    					<input class="input__field" type="text" id="task-input" placeholder="DD/MM" />
+    					<label class="input__label" for="task-input">
+    						<svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+    							<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+    						</svg>
+    					</label>
+    				</span>
           </div>
         </div>
       </div>
       <div class="secondary">
-
+        <span>+ PRESS ENTER TO CONTINUE +</span>
       </div>
     </div>
     <script type="text/javascript">
-      let el = document.getElementById('date');
+      let el = document.getElementById('task-input');
       el.onkeypress = function(e){
 
-        if(e.key < 0 || e.key > 9 || el.value.length > 4){
-          e.preventDefault();
+        var charCode = e.which || e.keyCode;
+        var charStr = String.fromCharCode(charCode);
+        if (!/[0-9/]/.test(charStr) || el.value.length > 4) {
+            return false;
         }
+      }
+      el.onkeyup = function(e){
+        let dateString = el.value + '/1999';
+        let dateParts = dateString.split("/");
+        let dateObject = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
 
-        if(el.value.length === 2){
-          //find out how to append text to field
-        }
-
-        let secondary = document.getElementsByClassName('secondary')[0];
-        if(el.value.length === 5){
-
-          secondary.innerHTML = 'PRESS ANY KEY TO CONTINUE';
-          e.preventDefault();
+        let secondaryMessage = document.querySelector('.secondary>span');
+        let input = document.getElementsByClassName('input__field')[0];
+        if(el.value.length >= 5 && dateObject != "Invalid Date"){
+          input.classList.add('valid');
+          secondaryMessage.classList.add('show');
         }
         else {
-          secondary.innerHTML = '';
+          input.classList.remove('valid');
+          secondaryMessage.classList.remove('show');
         }
       }
     </script>
