@@ -68,6 +68,10 @@ html, body {
 
 .task > .terminal {
   line-height: 30pt;
+  font-size: 15pt;
+  font-family: 'Roboto Mono', monospace;
+  color: #DCDCEA;
+  text-align: center;
 }
 
 .task > .title {

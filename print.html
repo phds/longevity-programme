@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Printing example</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+    body, html {
+      height: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="row" style="height: 100%; margin-top: 200px">
+      <form class="col-xs-4 col-xs-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Enter the data and press 'Test it'!</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="tickets">Tickets to print:</label>
+              <input type="number" class="form-control" id="tickets" placeholder="eg. 5">
+            </div>
+            <button type="submit" id="submit-btn" class="btn btn-default">Method 1</button>
+            <hr>
+            <button type="button" name="button" id="btn-post" class="btn btn-default">Method 2</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script>
+
+  function sendData(data) {
+    var XHR = new XMLHttpRequest();
+    var urlEncodedData = "";
+    var urlEncodedDataPairs = [];
+    var name;
+
+    // Turn the data object into an array of URL-encoded key/value pairs.
+    for(name in data) {
+      urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+    }
+
+    // Combine the pairs into a single string and replace all %-encoded spaces to
+    // the '+' character; matches the behaviour of browser form submissions.
+    urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
+
+    // Define what happens on successful data submission
+    XHR.addEventListener('load', function(event) {
+      alert('Yeah! Data sent and response loaded.');
+    });
+
+    // Define what happens in case of error
+    XHR.addEventListener('error', function(event) {
+      alert('Oups! Something goes wrong.');
+    });
+
+    // Set up our request
+    XHR.open('POST', 'https://api.particle.io/v1/devices/2d0040000d47343432313031/led?access_token=dc9f5e2102aa1394e475dc5cffaf991cbb256a05');
+
+    // Add the required HTTP header for form data POST requests
+    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Finally, send our data.
+    XHR.send(urlEncodedData);
+  }
+
+document.getElementById('btn-post').onclick = () => {
+  let numTickets = document.querySelector('#tickets').value;
+  sendData({tickets:numTickets});
+
+
+}
+  </script>
+</html>
