@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>DATE</title>
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/madoka.css">
-    <link rel="stylesheet" href="css/typed.css">
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/madoka.css">
+    <link rel="stylesheet" href="../css/typed.css">
   </head>
   <body>
     <div class="container">
@@ -30,9 +30,16 @@
         <span>+++ PRESS ENTER TO CONTINUE +++</span>
       </div>
     </div>
-    <script src="js/typed.js" charset="utf-8"></script>
-    <script src="js/main.js" charset="utf-8"></script>
+    <script src="../js/typed.js" charset="utf-8"></script>
+    <script src="../js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
+
+      type('.title>span', 'Insert the DD/MM of your birth date.', function(){
+        el.parentNode.classList.remove('hide');
+      });
+
+      let dateValid = false;
+      let input = document.querySelector(".input__field");
       let el = document.getElementById('task-input');
       el.onkeypress = function(e){
 
@@ -50,12 +57,11 @@
         else{
           let day = el.value.split("/")[0];
           let month = el.value.split("/")[1];
-          let dateValid = day <= 31 && month <= 12 && month.length == 2;
-          let input = document.querySelector(".input__field");
+          dateValid = day <= 31 && month <= 12 && month.length == 2;
           let secondaryMessage = document.querySelector('.secondary>span');
           if(dateValid){
             input.classList.add('valid');
-            setEnterAsNextPage('welcome.html');
+            setEnterAsNextPage('../welcome.html');
           }
           else {
             input.classList.remove('valid');
@@ -64,9 +70,23 @@
         }
       }
 
-      type('.title>span', 'Enter DD/MM of your birth date', function(){
-        el.parentNode.classList.remove('hide');
-      })
+      function insertAfter(newNode, referenceNode) {
+          referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+      }
+
+      let cursor = document.querySelector('.typed-cursor').cloneNode();
+      el.onfocus = function(){
+        document.querySelector('.typed-cursor').style.visibility = 'hidden';
+        if(dateValid) {
+          input.classList.add('valid');
+        }
+      }
+
+      el.onblur = function(){
+        document.querySelector('.typed-cursor').style.visibility = 'visible';
+        input.classList.remove('valid');
+      }
+
     </script>
   </body>
 </html>

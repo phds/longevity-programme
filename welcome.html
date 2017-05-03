@@ -25,10 +25,12 @@
         document.querySelector('.primary>.text').classList.remove('fade-in');
         document.querySelector('.primary>.text').classList.add('initial');
         document.querySelector('.primary>.text').classList.remove('show');
-        setEnterAsNextPage('headphones.html');
-        setGlitching();
-      }, 2000);
 
+        setGlitching();
+      }, 3600);
+      setTimeout(function(){
+        setEnterAsNextPage('headphones.html');
+      }, 3000)
 
 
     });
