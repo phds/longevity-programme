@@ -34,7 +34,7 @@ function type(querySelector, str, cb){
   	contentType: 'html',
     showCursor: true,
   	cursorChar: "|",
-    typeSpeed: 50,
+    typeSpeed: 20,
     callback: function(){
       if(cb) {
         cb();
