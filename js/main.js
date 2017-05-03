@@ -8,8 +8,8 @@ function setGlitching(){
           $('canvas').remove();
           $('body').prepend(content);
         }, 500)
-      }, Math.floor(Math.random() * (2600 - 1000 + 1)) + 1000)
-    }, 2000);
+      }, Math.floor(Math.random() * (3000 - 1000 + 1)) + 2000)
+    }, 3100);
   });
 }
 function setEnterAsNextPage(nextPage){
