@@ -1,0 +1,27 @@
+.heart {
+  height: 30px;
+  width: 30px;
+  margin-top: 30px;
+  border-radius: 50%;
+  position: relative;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.heart > img {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -13px;
+  right: -15px;
+}
+
+.heart.filled {
+  animation: glow 1.2s 1;
+}
+
+@keyframes glow{
+    0% { box-shadow: 0px 0px 0px 0px rgb(255,40,2); }
+    30% { box-shadow: 0px 0px 180px 30px rgb(255,40,2); }
+    100% { box-shadow: 0px 0px 0px 0px rgb(255,40,2); }
+}

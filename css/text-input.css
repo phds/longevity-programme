@@ -3,7 +3,7 @@
 	z-index: 1;
 	max-width: 350px;
 	vertical-align: top;
-	margin: 20px;
+	margin: 10px;
 	display: flex;
 	width: 300px;
 	opacity: 1;
@@ -19,11 +19,6 @@
 	display: block;
 	float: right;
 	padding: 0.8em;
-
-	/*this is wrong: */
-	padding-left: 27px;
-
-	width: 60%;
 	border: none;
 	border-radius: 0;
 	background: #f0f0f0;
@@ -42,6 +37,10 @@
 }
 
 
+.input__label.date {
+
+	padding-left: 27px;
+}
 
 .input__field::-webkit-input-placeholder {
 	color: rgb(110, 185, 245);
