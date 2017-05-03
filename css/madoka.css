@@ -11,7 +11,7 @@
 }
 
 .input.date {
-	width: 170px;
+	width: 150px;
 }
 
 .input__field {
@@ -109,6 +109,6 @@
 }
 
 .input__field.valid{
-	box-shadow: 0px 0px 300px 40px rgb(255,40,2);
+	box-shadow: 0px 0px 400px 20px rgb(255,40,2);
   transition: box-shadow 1s ease;
 }
