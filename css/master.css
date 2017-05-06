@@ -30,23 +30,18 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .primary {
-
-
   display: flex;
-  width: 100%;
-  height: 70%;
   align-items: center;
   justify-content: center;
 
-  position: relative;
-
-
+  /*margin-bottom: 50px;*/
 }
 
-.primary > .text{
+.text{
   color: #DCDCEA;
   font-size: 60pt;
   font-family: 'Rubik', monospace;
@@ -54,8 +49,6 @@ html, body {
 
   border-bottom: 4pt solid #FF441D;
   padding-bottom: 8px;
-  position: absolute;
-  bottom: 22%;
 }
 
 .task {
@@ -64,8 +57,8 @@ html, body {
   min-height: 165px;
   width: 700px;
   overflow: auto;
-  position: absolute;
-  bottom: 10%;
+  /*position: absolute;
+  bottom: 10%;*/
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -105,11 +98,10 @@ html, body {
 
 .secondary {
   display: flex;
-  width: 100%;
-  height: 30%;
   align-items: center;
   justify-content: center;
-  padding-top: 10px;
+  position: absolute;
+  bottom: 22%;
 }
 
 .secondary span {
