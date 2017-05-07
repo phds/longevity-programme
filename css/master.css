@@ -61,7 +61,7 @@ html, body {
   padding: 13px 16px;
   min-height: 165px;
   width: 700px;
-  overflow: auto;
+  overflow: hidden;
   /*position: absolute;
   bottom: 10%;*/
   display: flex;
@@ -69,6 +69,7 @@ html, body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .task > .message {
@@ -89,6 +90,8 @@ html, body {
   width: 100%;
   height: 50%;
   color: #DCDCEA;
+  position: absolute;
+  top: 20%;
 }
 
 .task .title span {
@@ -102,6 +105,8 @@ html, body {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 20%;
 }
 
 .secondary {

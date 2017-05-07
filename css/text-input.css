@@ -35,14 +35,14 @@
 	text-align: center;
 	font-family: 'Roboto Mono Light';
 	font-size: 12pt;
-	letter-spacing: 9pt;
+	letter-spacing: 5pt;
 
 	transition: box-shadow 1s ease;
 }
 
 
 .input__field::-webkit-input-placeholder {
-	color: rgb(110, 185, 245);
+	color: rgba(110, 185, 245, 0.5);
 	text-align: center;
 
 }
