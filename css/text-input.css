@@ -37,11 +37,6 @@
 }
 
 
-.input__label.date {
-
-	padding-left: 27px;
-}
-
 .input__field::-webkit-input-placeholder {
 	color: rgb(110, 185, 245);
 	text-align: center;

@@ -1,0 +1,6 @@
+1 birth date
+2 double click heart
+3 hunger scale
+4 double click cow
+5 random numbers
+6 enter location
