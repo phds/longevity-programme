@@ -1,10 +1,11 @@
 .cow{
-  width: 150px;
+  width: 120px;
+  margin-left: 16px;
 }
 
 #loadingProgressG{
-	width:170px;
-	height:19px;
+	width:120px;
+	height:7px;
 	overflow:hidden;
 	background-color:rgb(255,40,2);
 	border-radius:10px;
@@ -19,8 +20,8 @@
 	animation-duration:1.5s;
 	animation-iteration-count:infinite;
 	animation-timing-function:linear;
-	width:170px;
-	height:19px;
+	width:120px;
+	height:7px;
 }
 
 @keyframes bounce_loadingProgressG{
