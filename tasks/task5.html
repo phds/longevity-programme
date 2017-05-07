@@ -18,7 +18,7 @@
           </div>
           <div class="body">
             <span class="input numbers hide">
-    					<input class="input__field numbers" type="text" id="task-input" placeholder="512 9123 1342 552 943" />
+    					<input class="input__field numbers" type="text" id="task-input" placeholder="51758" />
     					<label class="input__label" for="task-input">
     						<svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
     							<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
@@ -40,7 +40,7 @@
       let input = document.querySelector(".input__field");
       let el = document.getElementById('task-input');
 
-      type('.title>span', 'Enter 5 random numbers.', function(){
+      type('.title>span', 'Enter 5 random digits.', function(){
         el.parentNode.classList.remove('hide');
       });
 
@@ -48,15 +48,15 @@
 
         var charCode = e.which || e.keyCode;
         var charStr = String.fromCharCode(charCode);
-        if (!/[0-9 ]/.test(charStr) || el.value.length > 20) {
+        if (!/[0-9]/.test(charStr) || el.value.length > 4) {
             return false;
         }
 
       }
       el.onkeyup = function(e){
 
-        let numbers = el.value.split(' ');
-        validInput = numbers.length == 5 && numbers[4] != "";
+        let numbers = el.value;
+        validInput = numbers.length == 5;
         if(validInput){
           input.classList.add('valid');
           setEnterAsNextPage('task6.html');
