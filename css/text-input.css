@@ -44,7 +44,6 @@
 .input__field::-webkit-input-placeholder {
 	color: rgba(110, 185, 245, 0.5);
 	text-align: center;
-
 }
 
 .input__field:focus::-webkit-input-placeholder {
