@@ -6,8 +6,7 @@
       <link rel="icon" href="assets/favicon.ico">
       <link href="css/jquery.terminal.min.css" rel="stylesheet"/>
     </head>
-    <body>
-
+    <body style='cursor:none'>
     </body>
     <script src="js/jquery-1.7.1.min.js"></script>
     <script src="js/jquery.terminal.min.js"></script>
@@ -64,9 +63,9 @@ $(function() {
                 term.echo(bootText[5]);
                 term.echo(bootText[6] + "\n\n")
                 typed_message(term, bootText[7], 100, function(){
-                  setTimeout(function(){
-                    window.location.href = 'loading.html'
-                  },1500)
+                  // setTimeout(function(){
+                  //   window.location.href = 'loading.html'
+                  // },1500)
                 })
               })
             })

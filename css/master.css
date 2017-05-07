@@ -23,9 +23,13 @@ html, body {
   overflow: hidden;
 }
 
+.no-cursor {
+  cursor: none;
+}
 
 .container {
   height: inherit;
+  width:100%;
   display: flex;
   flex-direction: column;
   align-items: center;
