@@ -41,7 +41,7 @@ function type(querySelector, str, cb, preStringTyped){
   	strings: [str],
   	contentType: 'html',
     showCursor: true,
-  	// cursorChar: "▋",
+  	cursorChar: "▋",
     typeSpeed: 30,
     callback: function(){
       if(cb) {
