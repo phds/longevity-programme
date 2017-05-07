@@ -2,5 +2,5 @@
 2 double click heart
 3 hunger scale
 4 double click cow
-5 random numbers
+5 random digits
 6 enter location
