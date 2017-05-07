@@ -89,7 +89,7 @@
 	pointer-events: none;
 
 	stroke: rgb(255,40,2); /*red*/
-	stroke-width: 6px;
+	stroke-width: 9px;
 	stroke-dasharray: 962;
 	stroke-dashoffset: 558;
 }
