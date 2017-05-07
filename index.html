@@ -3,16 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>POWER</title>
+
     <link rel="stylesheet" href="css/power.css">
   </head>
   <body>
-    <img src="assets/power-button-white.svg" alt="">
+    <div class="content">
+      <img src="assets/power-button-white.svg" alt="">
+      <span>CLICK THE BUTTON TO BEGIN</span>
+    </div>
     <script src="js/html2canvas.js" charset="utf-8"></script>
     <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
     <script src="js/glitch.js" charset="utf-8"></script>
     <script type="text/javascript">
-      document.querySelector('img').addEventListener('click', function(){
-        document.querySelector('img').classList.add('flicker');
+      document.querySelector('.content').addEventListener('click', function(){
+        document.querySelector('.content').classList.add('flicker');
         setTimeout(function(){
           window.location.href='boot.html';
         }, 3000)

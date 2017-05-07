@@ -26,18 +26,22 @@
         document.querySelector('.primary>.text').classList.remove('show');
 
         setGlitching();
-        let i=0, sequence = '221195';
-        document.addEventListener('keypress', function(e){
-          if(e.key == sequence[i]){
-            i++;
-            if(i == sequence.length){
-              window.location.href = 'index.html';
-            }
-          }
-          else{
-            i=0;
-          }
-        })
+        setTimeout(function(){
+          window.location.href = 'index.html'
+        }, 5000)
+
+        // let i=0, sequence = [13,13];
+        // document.addEventListener('keypress', function(e){
+        //   if(e.keyCode == sequence[i]){
+        //     i++;
+        //     if(i == sequence.length){
+        //       window.location.href = 'index.html';
+        //     }
+        //   }
+        //   else{
+        //     i=0;
+        //   }
+        // })
         }, 2000);
     </script>
   </body>
