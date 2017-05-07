@@ -68,7 +68,8 @@ html, body {
 }
 
 .task > .message {
-  line-height: 30pt;
+  /*line-height: 30pt;*/
+  line-height: normal;
   font-size: 13pt;
   color: #DCDCEA;
   text-align: center;
