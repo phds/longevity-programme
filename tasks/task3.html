@@ -57,6 +57,10 @@
       let buttons = document.querySelectorAll('.btn-group div');
       for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click',function(e){
+          let cursor = document.querySelector('.typed-cursor');
+          if(cursor){
+            cursor.remove();            
+          }
           for (var i = 0; i < buttons.length; i++) {
             buttons[i].classList.remove('active');
           }
