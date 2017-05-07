@@ -80,10 +80,6 @@ html, body {
   display: inline-block;
 }
 
-.task > .message.end {
-  line-height: 50pt;
-}
-
 .task > .message.printing {
   animation: blink ease-in infinite;
   animation-duration: 1s;
@@ -113,13 +109,13 @@ html, body {
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 15%;
+  bottom: 12%;
 }
 
 .secondary span {
   color: rgb(255,40,2);
   font-family: 'Roboto Mono', monospace;
-  font-size: 12pt;
+  font-size: 10pt;
   transition: opacity 0.5s;
   opacity:0;
 }

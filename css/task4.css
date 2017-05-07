@@ -1,7 +1,11 @@
+.title.tilt-left{
+  margin-left: 15px;
+}
+
 .cow {
   height: 3px;
   width: 3px;
-  margin-top: 30px;
+  margin: 30px;
   border-radius: 50%;
   position: relative;
   opacity: 1;

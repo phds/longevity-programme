@@ -1,20 +1,21 @@
 .btn-group{
   margin-top: 15px;
   transition: opacity 1s;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .btn-group div {
   background-color: transparent;
-  border: 1px solid #FF441D;
+  border: 1.5px solid #FF441D;
   color: #FF441D;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   float: left;
-  margin: 0 3px;
+  margin: 0 6px;
   border-radius: 21px;
   cursor: pointer;
-  font-size: 15px;
-  line-height: 39px;
+  font-size: 16px;
+  line-height: 37px;
 }
 
 .btn-group div:hover {
