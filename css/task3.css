@@ -1,3 +1,7 @@
+.task > .title-fix{
+  top:23%;
+}
+
 .btn-group{
   margin-top: 15px;
   transition: opacity 1s;

@@ -17,6 +17,7 @@
     <script type="text/javascript">
       document.querySelector('.content').addEventListener('click', function(){
         document.querySelector('.content').classList.add('flicker');
+        document.querySelector('img').classList.add('clicked');
         setTimeout(function(){
           window.location.href='boot.html';
         }, 3000)
