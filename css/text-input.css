@@ -1,7 +1,7 @@
 .input {
 	position: relative;
 	z-index: 1;
-	max-width: 350px;
+	width: 350px;
 	vertical-align: top;
 	margin: 10px;
 	display: flex;
@@ -12,6 +12,14 @@
 
 .input.date {
 	width: 150px;
+}
+
+.input.numbers{
+  width: 500px;
+}
+
+.input.location{
+	width: 400px;
 }
 
 .input__field {

@@ -59,14 +59,14 @@
         buttons[i].addEventListener('click',function(e){
           let cursor = document.querySelector('.typed-cursor');
           if(cursor){
-            cursor.remove();            
+            cursor.remove();
           }
           for (var i = 0; i < buttons.length; i++) {
             buttons[i].classList.remove('active');
           }
           e.target.classList.add('active');
           setTimeout(function(){
-            setEnterAsNextPage('../end.html');
+            setEnterAsNextPage('task1.html');
           }, 1700);
         });
       }

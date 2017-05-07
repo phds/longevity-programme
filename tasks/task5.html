@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>DATE</title>
-    <link rel="icon" href="assets/favicon.ico">
+    <title>NUMBERS</title>
+    <link rel="icon" href="../assets/favicon.ico">
     <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="../css/text-input.css">
+    <link rel="stylesheet" href="../css/task5.css">
     <link rel="stylesheet" href="../css/typed.css">
   </head>
   <body>
@@ -16,8 +17,8 @@
             <span></span>
           </div>
           <div class="body">
-            <span class="input date hide">
-    					<input class="input__field date" type="text" id="task-input" placeholder="DD/MM" />
+            <span class="input numbers hide">
+    					<input class="input__field numbers" type="text" id="task-input" placeholder="512 9123 1342 552 943" />
     					<label class="input__label" for="task-input">
     						<svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
     							<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
@@ -35,11 +36,11 @@
     <script src="../js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
 
-      let dateValid = false;
+      let validInput = false;
       let input = document.querySelector(".input__field");
       let el = document.getElementById('task-input');
 
-      type('.title>span', 'Insert the DD/MM of your birth date.', function(){
+      type('.title>span', 'Enter 5 random numbers.', function(){
         el.parentNode.classList.remove('hide');
       });
 
@@ -47,29 +48,24 @@
 
         var charCode = e.which || e.keyCode;
         var charStr = String.fromCharCode(charCode);
-        if (!/[0-9]/.test(charStr) || el.value.length > 4) {
+        if (!/[0-9 ]/.test(charStr) || el.value.length > 20) {
             return false;
         }
 
       }
       el.onkeyup = function(e){
-        if(el.value.length == 2 && e.keyCode != 8){
-          el.value = el.value + '/';
+
+        let numbers = el.value.split(' ');
+        validInput = numbers.length == 5 && numbers[4] != "";
+        if(validInput){
+          input.classList.add('valid');
+          setEnterAsNextPage('task6.html');
         }
-        else{
-          let day = el.value.split("/")[0];
-          let month = el.value.split("/")[1];
-          dateValid = day <= 31 && month <= 12 && month.length == 2;
-          let secondaryMessage = document.querySelector('.secondary>span');
-          if(dateValid){
-            input.classList.add('valid');
-            setEnterAsNextPage('task5.html');
-          }
-          else {
-            input.classList.remove('valid');
-            removeEnterAsNextPage();
-          }
+        else {
+          input.classList.remove('valid');
+          removeEnterAsNextPage();
         }
+
       }
 
       function insertAfter(newNode, referenceNode) {
@@ -79,7 +75,7 @@
       let cursor = document.querySelector('.typed-cursor').cloneNode();
       el.onfocus = function(){
         document.querySelector('.typed-cursor').style.visibility = 'hidden';
-        if(dateValid) {
+        if(validInput) {
           input.classList.add('valid');
         }
       }

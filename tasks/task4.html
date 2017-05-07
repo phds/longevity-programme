@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>COW</title>
-    <link rel="icon" href="assets/favicon.ico">
+    <link rel="icon" href="../assets/favicon.ico">
     <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="../css/typed.css">
     <link rel="stylesheet" href="../css/task4.css">
@@ -17,7 +17,7 @@
           </div>
           <div class="body">
             <span class="cow hide">
-              <img src="../assets/heart-outline.svg">
+              <img src="../assets/cow-outline.svg">
     				</span>
           </div>
         </div>
@@ -32,7 +32,7 @@
 
       let dateValid = false;
       let input = document.querySelector(".input__field");
-      let el = document.querySelector('.heart');
+      let el = document.querySelector('.cow');
 
       type('.title>span', 'Double click this icon.', function(){
         el.classList.remove('hide');
@@ -40,7 +40,7 @@
 
       el.ondblclick = function(e){
 
-        el.children[0].src = "../assets/heart-full.svg";
+        el.children[0].src = "../assets/cow-full.svg";
         el.classList.add('filled');
         document.querySelector('.typed-cursor').style.visibility = 'hidden';
         setTimeout(function(){
