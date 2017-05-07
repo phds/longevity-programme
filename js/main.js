@@ -22,13 +22,17 @@ function setEnterAsNextPage(nextPage){
   }
 }
 
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
 function removeEnterAsNextPage(){
   let secondaryMessage = document.querySelector('.secondary>span');
   secondaryMessage.classList.remove('show');
   document.onkeypress = null;
 }
 
-function type(querySelector, str, cb){
+function type(querySelector, str, cb, preStringTyped){
   Typed.new(querySelector, {
   	strings: [str],
   	contentType: 'html',
@@ -39,6 +43,18 @@ function type(querySelector, str, cb){
       if(cb) {
         cb();
       }
-    }
+    },
+    preStringTyped: function() {
+
+      if(preStringTyped && title.innerText.length == 3){
+
+
+        // cursor.remove();
+      }
+    },
   });
+}
+
+function setupButtons(){
+
 }

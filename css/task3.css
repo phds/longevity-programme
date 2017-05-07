@@ -1,0 +1,35 @@
+.btn-group{
+  margin-top: 15px;
+  transition: opacity 1s;
+}
+
+.btn-group div {
+  background-color: transparent;
+  border: 1px solid #FF441D;
+  color: #FF441D;
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin: 0 3px;
+  border-radius: 21px;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 39px;
+}
+
+.btn-group div:hover {
+    color: #0000CD;
+    background-color: #FF441D;
+}
+
+.btn-group div.active{
+	animation: glow 3s 1;
+  color: #0000CD;
+  background-color: #FF441D;
+}
+
+@keyframes glow{
+    0% { box-shadow: 0px 0px 0px 0px rgb(255,40,2); }
+    30% { box-shadow: 0px 0px 30px 3px rgb(255,40,2); }
+    100% { box-shadow: 0px 0px 0px 0px rgb(255,40,2); }
+}

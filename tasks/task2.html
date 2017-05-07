@@ -43,15 +43,10 @@
         el.classList.add('filled');
         document.querySelector('.typed-cursor').style.visibility = 'hidden';
         setTimeout(function(){
-          setEnterAsNextPage('../welcome.html');
+          setEnterAsNextPage('task3.html');
         }, 1200);
       }
 
-      function insertAfter(newNode, referenceNode) {
-          referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-      }
-
-      let cursor = document.querySelector('.typed-cursor').cloneNode();
       el.onfocus = function(){
 
         if(dateValid) {

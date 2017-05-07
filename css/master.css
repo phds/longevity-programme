@@ -52,6 +52,7 @@ html, body {
 }
 
 .task {
+  font-family: 'Roboto Mono Light', monospace;
   border: solid 3px #FF441D;
   padding: 13px 16px;
   min-height: 165px;
@@ -63,21 +64,18 @@ html, body {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .task > .message {
   line-height: 30pt;
   font-size: 13pt;
-  font-family: 'Roboto Mono Light', monospace;
   color: #DCDCEA;
   text-align: center;
   display: inline-block;
 }
 
 .task > .title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 50%;
   color: #DCDCEA;
@@ -89,7 +87,7 @@ html, body {
 }
 
 .task > .body {
-  width: 35%;
+  /*width: 35%;*/
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -101,7 +99,7 @@ html, body {
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 22%;
+  bottom: 15%;
 }
 
 .secondary span {
