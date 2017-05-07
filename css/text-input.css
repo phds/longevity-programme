@@ -15,7 +15,7 @@
 }
 
 .input.location{
-	width: 400px;
+	width: 280px;
 }
 
 .input__field {
@@ -35,11 +35,10 @@
 	text-align: center;
 	font-family: 'Roboto Mono Light';
 	font-size: 12pt;
-	letter-spacing: 5pt;
+	letter-spacing: 3pt;
 
 	transition: box-shadow 1s ease;
 }
-
 
 .input__field::-webkit-input-placeholder {
 	color: rgba(110, 185, 245, 0.5);
