@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>THANK YOU</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/animations.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="primary">
+        <span class="text fade-in">THANK YOU<br />FOR YOUR WORK</span>
+      </div>
+      <div class="secondary">
+        <span>+++ PRESS ENTER TO CONTINUE +++</span>
+      </div>
+    </div>
+    <script src="js/html2canvas.js" charset="utf-8"></script>
+    <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
+    <script src="js/glitch.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      setTimeout(function(){
+        document.querySelector('.primary>.text').classList.remove('fade-in');
+        document.querySelector('.primary>.text').classList.add('initial');
+        document.querySelector('.primary>.text').classList.remove('show');
+
+        setGlitching();
+        let i=0, sequence = '221195';
+        document.addEventListener('keypress', function(e){
+          if(e.key == sequence[i]){
+            i++;
+            if(i == sequence.length){
+              window.location.href = 'power.html';
+            }
+          }
+          else{
+            i=0;
+          }
+        })
+        }, 2000);
+    </script>
+  </body>
+</html>

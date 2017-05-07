@@ -75,6 +75,15 @@ html, body {
   display: inline-block;
 }
 
+.task > .message.end {
+  line-height: 50pt;
+}
+
+.task > .message.printing {
+  animation: blink ease-in infinite;
+  animation-duration: 1s;
+}
+
 .task > .title {
   width: 100%;
   height: 50%;

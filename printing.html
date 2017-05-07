@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PRINTING</title>
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="primary">
+        <div class="task">
+          <div class="message printing">
+            <span>*** PRINTING ***</span>
+          </div>
+        </div>
+      </div>
+      <div class="secondary">
+        <span class="">+++ PRESS ENTER TO PRINT TICKETS +++</span>
+      </div>
+    </div>
+    <script src="js/main.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function(event) {
+        setTimeout(function(){
+          window.location.href = 'thankyou.html';
+        }, 8000);
+
+      });
+    </script>
+  </body>
+</html>

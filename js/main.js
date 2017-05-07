@@ -12,6 +12,10 @@ function setGlitching(){
     }, 3100);
   });
 }
+
+function setImmediateGlitch(){
+  
+}
 function setEnterAsNextPage(nextPage){
   let secondaryMessage = document.querySelector('.secondary>span');
   secondaryMessage.classList.add('show');

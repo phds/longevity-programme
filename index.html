@@ -1,83 +1,22 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <title>LONGEVITY</title>
-      <link href="css/jquery.terminal.min.css" rel="stylesheet"/>
-    </head>
-    <body>
-
-    </body>
-    <script src="js/jquery-1.7.1.min.js"></script>
-    <script src="js/jquery.terminal.min.js"></script>
-    <script src="js/jquery.mousewheel-min.js"></script>
-    <script src="js/boot.js" charset="utf-8"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>POWER</title>
+    <link rel="stylesheet" href="css/power.css">
+  </head>
+  <body>
+    <img src="assets/power-button-white.svg" alt="">
+    <script src="js/html2canvas.js" charset="utf-8"></script>
+    <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
+    <script src="js/glitch.js" charset="utf-8"></script>
     <script type="text/javascript">
-$(function() {
-  var anim = false;
-  function typed(finish_typing) {
-      return function(term, message, delay, finish) {
-          anim = true;
-          var prompt = term.get_prompt();
-          var c = 0;
-          if (message.length > 0) {
-              term.set_prompt('');
-              var interval = setInterval(function() {
-                  term.insert(message[c++]);
-                  if (c == message.length) {
-                      clearInterval(interval);
-                      // execute in next interval
-                      setTimeout(function() {
-                          // swap command with prompt
-                          finish_typing(term, message, prompt);
-                          anim = false
-                          finish && finish();
-                      }, delay);
-                  }
-              }, delay);
-          }
-      };
-  }
-  var typed_prompt = typed(function(term, message, prompt) {
-      // swap command with prompt
-      term.set_command('');
-      term.set_prompt(message + ' ');
-  });
-  var typed_message = typed(function(term, message, prompt) {
-      term.set_command('');
-      term.echo(message)
-  });
-  $('body').terminal(function(cmd, term) {
-    term.echo("lol");
-  }, {
-      name: 'xxx',
-      greetings: null,
-      width: 1000,
-      height: 300,
-      onInit: function(term) {
-          typed_message(term, bootText[0], 1, function() {
-            term.echo(bootText[1]);
-            typed_message(term, bootText[2], 1, function(){
-              term.echo(bootText[3]);
-              typed_message(term, bootText[4], 1, function(){
-                term.echo(bootText[5]);
-                term.echo(bootText[6] + "\n\n")
-                typed_message(term, bootText[7], 100, function(){
-                  setTimeout(function(){
-                    window.location.href = 'welcome.html'
-                  },1500)
-                })
-              })
-            })
-          });
-      },
-      keydown: function(e) {
-          //disable keyboard when animating
-          if (anim) {
-              return false;
-          }
-      }
-  });
-});
+      document.querySelector('img').addEventListener('click', function(){
+        document.querySelector('img').classList.add('flicker');
+        setTimeout(function(){
+          window.location.href='boot.html';
+        }, 3000)
+      });
     </script>
-  </html>
+  </body>
+</html>
