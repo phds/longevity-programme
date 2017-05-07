@@ -1,0 +1,41 @@
+.cow{
+  width: 150px;
+}
+
+#loadingProgressG{
+	width:250px;
+	height:19px;
+	overflow:hidden;
+	background-color:rgb(255,40,2);
+	border-radius:10px;
+  margin-top: 10px;
+}
+
+.loadingProgressG{
+	background-color:rgb(255,255,255);
+	margin-top:0;
+	margin-left:-250px;
+	animation-name:bounce_loadingProgressG;
+	animation-duration:1.5s;
+	animation-iteration-count:infinite;
+	animation-timing-function:linear;
+	width:250px;
+	height:19px;
+}
+
+.loading-text{
+  font-family: 'Roboto Mono Light', monospace;
+  color: #DCDCEA;
+  font-size: 25pt;
+  margin-top: 12px;
+}
+
+@keyframes bounce_loadingProgressG{
+	0%{
+		margin-left:-250px;
+	}
+
+	100%{
+		margin-left:250px;
+	}
+}
