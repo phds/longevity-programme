@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>THANK YOU</title>
+    <link rel="icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/animations.css">
   </head>
@@ -25,7 +26,11 @@
         document.querySelector('.primary>.text').classList.add('initial');
         document.querySelector('.primary>.text').classList.remove('show');
 
-        setGlitching();
+        // setGlitching();
+        setTimeout(function(){
+          console.log('glith')
+          $(".container").glitch();
+        },3500)
         setTimeout(function(){
           window.location.href = 'index.html'
         }, 5000)
