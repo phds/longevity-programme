@@ -35,7 +35,6 @@
 	text-align: center;
 	font-family: 'Roboto Mono Light';
 	font-size: 12pt;
-	letter-spacing: 3pt;
 
 	transition: box-shadow 1s ease;
 }
@@ -90,7 +89,7 @@
 	pointer-events: none;
 
 	stroke: rgb(255,40,2); /*red*/
-	stroke-width: 9px;
+	stroke-width: 6px;
 	stroke-dasharray: 962;
 	stroke-dashoffset: 558;
 }
