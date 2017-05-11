@@ -34,7 +34,8 @@
 	color: #DCDCEA;
 	text-align: center;
 	font-family: 'Roboto Mono Light';
-	font-size: 12pt;
+	font-size: 11pt;
+	letter-spacing: 3px;
 
 	transition: box-shadow 1s ease;
 }

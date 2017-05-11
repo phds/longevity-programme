@@ -1,12 +1,12 @@
   <!DOCTYPE html>
-  <html>
+  <html style='cursor:none !important;'>
     <head>
       <meta charset="utf-8">
       <title>BOOT</title>
       <link rel="icon" href="assets/favicon.png">
       <link href="css/jquery.terminal.min.css" rel="stylesheet"/>
     </head>
-    <body style='cursor:none;overflow:hidden;'>
+    <body style="overflow:hidden;">
     </body>
     <script src="js/jquery-1.7.1.min.js"></script>
     <script src="js/jquery.terminal.min.js"></script>
@@ -14,6 +14,7 @@
     <script src="js/boot.js" charset="utf-8"></script>
     <script type="text/javascript">
 $(function() {
+  document.body.requestPointerLock();
   var anim = false;
   function typed(finish_typing) {
       return function(term, message, delay, finish) {

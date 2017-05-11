@@ -36,6 +36,7 @@ html, body {
 }
 
 img {
+  padding: 20px;
   width: 100px;
   cursor: pointer;
 }
