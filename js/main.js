@@ -156,7 +156,7 @@ function playMusic(){
 
   function update() {
     var tillPlayed = getCookie('timePlayed');
-    song.volume=0.1;
+    song.volume=0.0;
     if(!played){
         if(tillPlayed){
           song.currentTime = tillPlayed;
