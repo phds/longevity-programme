@@ -16,11 +16,13 @@
         <span>+++ PRESS ENTER TO CONTINUE +++</span>
       </div>
     </div>
+    <audio preload="auto" src="audio/music/tetris2.mp3" loop="true" autobuffer\>
     <script src="js/html2canvas.js" charset="utf-8"></script>
     <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
     <script src="js/glitch.js" charset="utf-8"></script>
     <script src="js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
+      playMusic();
       setTimeout(function(){
         document.querySelector('.primary>.text').classList.remove('fade-in');
         document.querySelector('.primary>.text').classList.add('initial');

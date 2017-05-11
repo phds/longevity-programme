@@ -14,11 +14,16 @@
       	<div id="loadingProgressG_1" class="loadingProgressG"></div>
       </div>
     </div>
+    <audio preload="auto" src="audio/music/tetris2.mp3" loop="true" autobuffer\>
     <script src="js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
-      setTimeout(function(){
-        window.location.href = "welcome.html";
-      },5000)
+      localStorage.setItem('timePlayed', 0);
+      playMusic();
+      document.addEventListener("DOMContentLoaded", function(event) {
+        setTimeout(function(){
+          window.location.href = "welcome.html";
+        },5000)
+      });
     </script>
   </body>
 </html>
