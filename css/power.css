@@ -27,10 +27,6 @@ html, body {
   flex-direction: column;
 }
 
-.content span{
-  margin-top: 30px;
-}
-
 .content.flicker{
   animation: flicker 2s infinite;
 }
