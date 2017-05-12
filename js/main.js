@@ -23,9 +23,9 @@ function setEnterAsNextPage(nextPage, q5){
     if(e.keyCode == 13){
       document.querySelector('#next').play();
       timeoutTime = q5 ? 500 : 100;
-
+      console.log(timeoutTime)
       setTimeout(function(){
-        window.location.href = nextPage;
+        // window.location.href = nextPage;
       }, timeoutTime);
     }
   }
