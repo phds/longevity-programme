@@ -20,9 +20,11 @@
         <span class="">+++ PRESS ENTER TO PRINT TICKETS +++</span>
       </div>
     </div>
+    <audio id="printing" preload="auto" src="audio/sfx/printing.wav" autobuffer\>
     <script src="js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", function(event) {
+        document.querySelector('#printing').play();
         sendData();
         setTimeout(function(){
           window.location.href = 'thankyou.html';

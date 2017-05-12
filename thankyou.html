@@ -16,6 +16,7 @@
         <span>+++ PRESS ENTER TO CONTINUE +++</span>
       </div>
     </div>
+    <audio id="thankyou" preload="auto" src="audio/sfx/thankyou.mp3" autobuffer\>
     <script src="js/html2canvas.js" charset="utf-8"></script>
     <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
     <script src="js/glitch.js" charset="utf-8"></script>
@@ -28,12 +29,13 @@
 
         // setGlitching();
         setTimeout(function(){
-          console.log('glith')
           $(".container").glitch();
+          document.querySelector('#thankyou').play();
+          setTimeout(function(){
+            window.location.href = 'index.html'
+          }, 1400)
         },3500)
-        setTimeout(function(){
-          window.location.href = 'index.html'
-        }, 5000)
+
 
         // let i=0, sequence = [13,13];
         // document.addEventListener('keypress', function(e){

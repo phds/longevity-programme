@@ -16,14 +16,16 @@
         <span>+++ PRESS ENTER TO CONTINUE +++</span>
       </div>
     </div>
-    <audio preload="auto" src="audio/music/tetris2.mp3" loop="true" autobuffer\>
+    <audio id="welcome" preload="auto" src="audio/sfx/welcome.mp3" autobuffer\>
+    <audio id="next" preload="auto" src="audio/sfx/next.wav" autobuffer\>
+
     <script src="js/html2canvas.js" charset="utf-8"></script>
     <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
     <script src="js/glitch.js" charset="utf-8"></script>
     <script src="js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
-      playMusic();
+      document.querySelector('#welcome').play();
       setTimeout(function(){
         document.querySelector('.primary>.text').classList.remove('fade-in');
         document.querySelector('.primary>.text').classList.add('initial');

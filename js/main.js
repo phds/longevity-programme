@@ -16,12 +16,17 @@ function setGlitching(){
 function setImmediateGlitch(){
 
 }
-function setEnterAsNextPage(nextPage){
+function setEnterAsNextPage(nextPage, q5){
   let secondaryMessage = document.querySelector('.secondary>span');
   secondaryMessage.classList.add('show');
   document.onkeypress = function(e){
     if(e.keyCode == 13){
-      window.location.href = nextPage;
+      document.querySelector('#next').play();
+      timeoutTime = q5 ? 500 : 100;
+
+      setTimeout(function(){
+        window.location.href = nextPage;
+      }, timeoutTime);
     }
   }
 }

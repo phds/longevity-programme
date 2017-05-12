@@ -31,6 +31,7 @@
         <span>+++ PRESS ENTER TO CONTINUE +++</span>
       </div>
     </div>
+    <audio id="next" preload="auto" src="../audio/sfx/last.wav" autobuffer\>
     <script src="../js/typed.js" charset="utf-8"></script>
     <script src="../js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
@@ -48,7 +49,7 @@
 
       el.onkeypress = function(e){
         if(el.value.length > 5){
-          setEnterAsNextPage('../end.html');
+          setEnterAsNextPage('../end.html', true);
         }
         // var charCode = e.which || e.keyCode;
         // var charStr = String.fromCharCode(charCode);
