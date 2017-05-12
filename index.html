@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/power.css">
   </head>
   <body>
-    <div class="content">
+    <div class="content hide">
       <img src="assets/power-button-white.svg" alt="">
       <span>CLICK THE BUTTON TO BEGIN</span>
     </div>
@@ -15,6 +15,9 @@
     <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
     <script src="js/glitch.js" charset="utf-8"></script>
     <script type="text/javascript">
+      setTimeout(function(){
+        document.querySelector('.content.hide').classList.remove('hide');
+      }, 2000)
       document.querySelector('img').addEventListener('click', function(){
         document.querySelector('.content').classList.add('flicker');
         document.querySelector('img').classList.add('clicked');
