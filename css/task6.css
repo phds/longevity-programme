@@ -1,0 +1,40 @@
+.task > .title-fix{
+  top:23%;
+}
+
+.btn-group{
+  margin-top: 15px;
+  transition: opacity 1s;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.btn-group div {
+  background-color: transparent;
+  border: 1.5px solid #FF441D;
+  color: #FF441D;
+  width: 38px;
+  height: 38px;
+  float: left;
+  margin: 0 4px;
+  border-radius: 21px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 37px;
+}
+
+.btn-group div:hover {
+    color: #0000CD;
+    background-color: #FF441D;
+}
+
+.btn-group div.active{
+	animation: glow 3s 1;
+  color: #0000CD;
+  background-color: #FF441D;
+}
+
+@keyframes glow{
+    0% { box-shadow: 0px 0px 0px 0px rgb(255,40,2); }
+    30% { box-shadow: 0px 0px 30px 3px rgb(255,40,2); }
+    100% { box-shadow: 0px 0px 0px 0px rgb(255,40,2); }
+}

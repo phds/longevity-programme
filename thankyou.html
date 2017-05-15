@@ -1,55 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>THANK YOU</title>
-    <link rel="icon" href="assets/favicon.png">
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/animations.css">
-  </head>
-  <body>
-    <div class="container no-cursor">
-      <div class="primary">
-        <span class="text fade-in">THANK YOU<br />FOR YOUR WORK</span>
-      </div>
-      <div class="secondary">
-        <span>+++ PRESS ENTER TO CONTINUE +++</span>
-      </div>
-    </div>
-    <audio id="thankyou" preload="auto" src="audio/sfx/thankyou.mp3" autobuffer\>
-    <script src="js/html2canvas.js" charset="utf-8"></script>
-    <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
-    <script src="js/glitch.js" charset="utf-8"></script>
-    <script src="js/main.js" charset="utf-8"></script>
-    <script type="text/javascript">
-      setTimeout(function(){
-        document.querySelector('.primary>.text').classList.remove('fade-in');
-        document.querySelector('.primary>.text').classList.add('initial');
-        document.querySelector('.primary>.text').classList.remove('show');
-
-        // setGlitching();
-        setTimeout(function(){
-          $(".container").glitch();
-          document.querySelector('#thankyou').play();
-          setTimeout(function(){
-            window.location.href = 'index.html';
-          }, 1400)
-        },3500)
-
-
-        // let i=0, sequence = [13,13];
-        // document.addEventListener('keypress', function(e){
-        //   if(e.keyCode == sequence[i]){
-        //     i++;
-        //     if(i == sequence.length){
-        //       window.location.href = 'index.html';
-        //     }
-        //   }
-        //   else{
-        //     i=0;
-        //   }
-        // })
-        }, 2000);
-    </script>
-  </body>
-</html>
+<div class="container no-cursor">
+  <div class="primary">
+    <span class="text fade-in">THANK YOU<br />FOR YOUR WORK</span>
+  </div>
+  <div class="secondary">
+    <span>+++ PRESS ENTER TO CONTINUE +++</span>
+  </div>
+</div>

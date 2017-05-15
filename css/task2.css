@@ -1,27 +1,30 @@
-.heart {
-  height: 30px;
-  width: 30px;
-  margin-top: 30px;
+.title.tilt-left{
+  margin-left: 15px;
+}
+
+.cow {
+  height: 3px;
+  width: 3px;
+  margin: 30px;
   border-radius: 50%;
   position: relative;
   opacity: 1;
   transition: opacity 1s;
 }
 
-.heart > img {
-  width: 60px;
-  height: 60px;
+.cow > img {
+  width: 80px;
   position: absolute;
-  top: -13px;
-  right: -15px;
+  top: -16px;
+  right: -42px;
 }
 
-.heart.filled {
-  animation: glow 1.2s 1;
+.cow.filled {
+  animation: glow-cow 1.8s 1;
 }
 
-@keyframes glow{
+@keyframes glow-cow{
     0% { box-shadow: 0px 0px 0px 0px rgb(255,40,2); }
-    30% { box-shadow: 0px 0px 180px 30px rgb(255,40,2); }
+    30% { box-shadow: 0px 0px 180px 50px rgb(255,40,2); }
     100% { box-shadow: 0px 0px 0px 0px rgb(255,40,2); }
 }

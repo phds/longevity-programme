@@ -1,77 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>HUNGRINESS</title>
-    <link rel="icon" href="../assets/favicon.png">
-    <link rel="stylesheet" href="../css/master.css">
-    <link rel="stylesheet" href="../css/typed.css">
-    <link rel="stylesheet" href="../css/task3.css">
-  </head>
-  <body>
-    <div class="container">
-      <div class="primary">
-        <div class="task">
-          <div class="title title-fix">
-            <span></span>
-          </div>
-          <div class="body">
-            <span class="btn-group hide">
-              <div value="1">1</div>
-              <div value="2">2</div>
-              <div value="3">3</div>
-              <div value="4">4</div>
-              <div value="5">5</div>
-              <div value="6">6</div>
-              <div value="7">7</div>
-              <div value="8">8</div>
-              <div value="9">9</div>
-              <div value="10">10</div>
-    				</span>
-          </div>
-        </div>
+<div class="container">
+  <div class="primary">
+    <div class="task">
+      <div class="title">
+        <span></span>
       </div>
-      <div class="secondary">
-        <span>+++ PRESS ENTER TO CONTINUE +++</span>
+      <div class="body">
+        <span class="heart hide">
+          <img src="../assets/heart-outline.svg">
+				</span>
       </div>
     </div>
-    <audio id="next" preload="auto" src="../audio/sfx/next.mp3" autobuffer\>
-    <script src="../js/typed.js" charset="utf-8"></script>
-    <script src="../js/main.js" charset="utf-8"></script>
-    <script type="text/javascript">
-
-      setupButtons();
-
-      let dateValid = false;
-      let el = document.querySelector('.btn-group');
-
-      type('.title>span', 'On a scale from 1-10, rate your hunger level, 10 being<br />the hungriest.', function(){
-          el.classList.remove('hide');
-      });
-
-      el.onfocus = function(){
-        if(dateValid) {
-          input.classList.add('valid');
-        }
-      }
-
-      let buttons = document.querySelectorAll('.btn-group div');
-      for (var i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('click',function(e){
-          let cursor = document.querySelector('.typed-cursor');
-          if(cursor){
-            cursor.remove();
-          }
-          for (var i = 0; i < buttons.length; i++) {
-            buttons[i].classList.remove('active');
-          }
-          e.target.classList.add('active');
-          setTimeout(function(){
-            setEnterAsNextPage('task6.html');
-          }, 1700);
-        });
-      }
-
-    </script>
-  </body>
-</html>
+  </div>
+  <div class="secondary">
+    <span>+++ PRESS ENTER TO CONTINUE +++</span>
+  </div>
+</div>
