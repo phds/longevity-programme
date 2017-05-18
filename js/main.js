@@ -236,6 +236,7 @@ views = {
       js: function(){
         let input = document.querySelector(".input__field");
         let el = document.querySelector('.cow');
+        el.children[0].src = "../assets/cowoutline.svg";
 
         type('.title>span', 'Double click this icon.', function(){
           el.classList.remove('hide');
@@ -243,7 +244,7 @@ views = {
 
         el.ondblclick = function(e){
 
-          el.children[0].src = "../assets/cow-full.svg";
+          el.children[0].src = "../assets/cowfull.svg";
           el.classList.add('filled');
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           setTimeout(function(){
@@ -266,6 +267,7 @@ views = {
       js: function(){
         let input = document.querySelector(".input__field");
         let el = document.querySelector('.heart');
+        el.firstChild().src = "../assets/heartoutline.svg";
 
         type('.title>span', 'Double click this icon.', function(){
           el.classList.remove('hide');
@@ -273,7 +275,7 @@ views = {
 
         el.ondblclick = function(e){
 
-          el.children[0].src = "../assets/heart-full.svg";
+          el.children[0].src = "../assets/heartfull.svg";
           el.classList.add('filled');
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           setTimeout(function(){
