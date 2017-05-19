@@ -120,6 +120,7 @@ function setView(view){
    url:view.href,
    type:'GET',
    success: function(data){
+     $(".container").remove();
      $("body").prepend(data);
      $("head title").html(view.title);
      view.js();
@@ -347,7 +348,7 @@ views = {
             if(dateValid){
               input.classList.add('valid');
               el.onkeyup = undefined;
-              setEnterAsNextView(views.tasks.task3);
+              setEnterAsNextView(views.tasks.task6);
             }
             else {
               input.classList.remove('valid');
