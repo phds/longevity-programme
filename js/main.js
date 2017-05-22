@@ -34,10 +34,12 @@ function setEnterAsNextView(nextPage, finalQuestion){
       document.onkeypress = undefined;
       disableGlitching();
       if(finalQuestion){
+        document.querySelector('#next-final').volume = 0.1;
         document.querySelector('#next-final').play();
         timeoutTime = 700;
       }
       else{
+        document.querySelector('#next').volume = 0.1;
         document.querySelector('#next').play();
         timeoutTime = 100;
       }
@@ -201,6 +203,7 @@ views = {
     title: "PRINTING",
     href: "printing.html",
     js: function(){
+      document.querySelector('#printing').volume = 0.1
       document.querySelector('#printing').play();
       sendData();
       setTimeout(function(){
@@ -221,6 +224,7 @@ views = {
           document.querySelector('#music').pause();
 
           $(".container").glitch();
+          document.querySelector('#thankyou').volume = 0.4;
           document.querySelector('#thankyou').play();
           setTimeout(function(){
             window.location.href = 'index.html';
