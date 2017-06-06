@@ -1,0 +1,73 @@
+.task.drag{
+  height: 300px;
+}
+
+.task.drag > .title {
+  top: 16%;
+}
+
+.task.drag > .body{
+  width: 80%;
+  height: 50%;
+}
+
+.title.drag > .body {
+  height: 50%;
+  width: 80%;
+}
+
+#square{
+  height: 140px;
+  width: 140px;
+  position: absolute;
+  top: 10%;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.triangle {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+#triangle-1{
+  transform: rotate(-30deg);
+  left: 20%;
+  top: 21%;
+}
+
+#triangle-2{
+  left: 6%;
+  top: 85%;
+}
+
+#triangle-3{
+  transform: rotate(-30deg);
+  right: 13%;
+  top: 65%;
+}
+
+#circle{
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  opacity: 1;
+  transition: opacity 1s;
+
+  top: -3%;
+  right: 19%;
+  z-index: 5;
+}
+
+#square-img.filled {
+  animation: glow-square 2.2s 1;
+}
+
+@keyframes glow-square{
+    0% { box-shadow: 0px 0 0 0 rgb(0,123,197); }
+    30% { box-shadow: 0px 0px 50px 15px rgb(0,123,197); }
+    100% { box-shadow: 0px 0px 0px 0px rgb(0,123,197); }
+}

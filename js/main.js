@@ -2,7 +2,7 @@ var intervalId;
 var timeoutId;
 function setGlitching(){
   $(document).ready(function(){
-    let content = $("<div />").append($(".container").clone()).html();
+    var content = $("<div />").append($(".container").clone()).html();
     intervalId = setInterval(function(){
       timeoutId = setTimeout(function(){
         $(".container").glitch();
@@ -16,8 +16,6 @@ function setGlitching(){
 }
 
 function disableGlitching(){
-  // clearInterval(intervalId);
-  // clearTimeout(timeoutId);
   var highestTimeoutId = setTimeout(";");
   for (var i = 0 ; i < highestTimeoutId ; i++) {
       clearTimeout(i);
@@ -25,12 +23,11 @@ function disableGlitching(){
 }
 
 function setEnterAsNextView(nextPage, finalQuestion){
-  let secondaryMessage = document.querySelector('.secondary>span');
+  var secondaryMessage = document.querySelector('.secondary>span');
   secondaryMessage.classList.add('show');
-
-
   document.onkeypress = function(e){
     if(e.keyCode == 13){
+      $( ".task" ).css({"height": "auto" });
       document.onkeypress = undefined;
       disableGlitching();
       if(finalQuestion){
@@ -57,7 +54,7 @@ function insertAfter(newNode, referenceNode) {
 }
 
 function removeEnterAsNextView(){
-  let secondaryMessage = document.querySelector('.secondary>span');
+  var secondaryMessage = document.querySelector('.secondary>span');
   secondaryMessage.classList.remove('show');
   document.onkeypress = null;
 }
@@ -86,14 +83,14 @@ function type(querySelector, str, cb, preStringTyped){
 }
 
 function sendData() {
-  let XHR = new XMLHttpRequest();
-  let urlEncodedData = "";
-  let urlEncodedDataPairs = [];
-  let name;
+  var XHR = new XMLHttpRequest();
+  var urlEncodedData = "";
+  var urlEncodedDataPairs = [];
+  var name;
 
   //random number between 3 and 10
-  let randomNum = Math.floor(Math.random() * 10) + 3;
-  let data= {
+  var randomNum = Math.floor(Math.random() * 10) + 3;
+  var data= {
     arg: randomNum
   }
 
@@ -180,9 +177,9 @@ views = {
     title: "INSTRUCTIONS",
     href: "instructions.html",
     js: function(){
-      let str = 'Follow and answer the next 5 questions.<br/><br />Use the keypad and mouse to answer the randomly generated queries.';
+      var str = 'Follow and answer the next 5 questions.<br/><br />Use the keypad and mouse to answer the randomly generated queries.';
       type('.message>span', str, function(){
-        // let task = pickTask();
+        // var task = pickTask();
         setEnterAsNextView(views.tasks.task18);
       })
     }
@@ -192,7 +189,7 @@ views = {
     href: "finished.html",
     js: function(){
       var str = 'You have now finished a work rotation.^1500<br/><br />Please take your ticket reward.';
-      let secondaryMessage = document.querySelector('.secondary>span');
+      var secondaryMessage = document.querySelector('.secondary>span');
       type('.message>span', str, function(){
         secondaryMessage.classList.add('show');
         setEnterAsNextView(views.printing);
@@ -239,8 +236,8 @@ views = {
       title: "COW",
       href: "tasks/task2.html",
       js: function(){
-        let input = document.querySelector(".input__field");
-        let el = document.querySelector('.cow');
+        var input = document.querySelector(".input__field");
+        var el = document.querySelector('.cow');
         el.children[0].src = "assets/cowoutline.SVG";
 
         type('.title>span', 'Double click this icon.', function(){
@@ -270,8 +267,8 @@ views = {
       title: "HEART",
       href: "tasks/task3.html",
       js: function(){
-        let input = document.querySelector(".input__field");
-        let el = document.querySelector('.heart');
+        var input = document.querySelector(".input__field");
+        var el = document.querySelector('.heart');
         el.firstChild().src = "assets/heartoutline.SVG";
 
         type('.title>span', 'Double click this icon.', function(){
@@ -287,23 +284,90 @@ views = {
             setEnterAsNextView(views.tasks.task16);
           }, 1200);
         }
+      }
+    },
+    task5:{
+      title: "DRAG",
+      href: "tasks/task5.html",
+      js: function(){
+        type('.title>span', 'Drag and drop the circle into the square.', function(){
+          var hidden = document.getElementsByClassName("hide");
+          while (hidden.length){
+            hidden[0].classList.remove("hide");
+          }
+        });
 
+        $( "#circle" ).draggable({
+          containment: ".task"
+        });
+        $( ".triangle" ).draggable({
+          containment: ".task"
+        });
+        $( "#square" ).droppable({
+          drop: function( event, ui ) {
+            if(ui.draggable.prop('id')=="circle"){
+              document.getElementById('square-img').classList.add('filled');
+              setTimeout(function(){
+                setEnterAsNextView(views.tasks.task16);
+              }, 1200);
+            }
+          },
+          out: function(event, ui){
+            if(ui.draggable.prop('id')=="circle"){
+              var highestTimeoutId = setTimeout(";");
+              for (var i = 0 ; i < highestTimeoutId ; i++) {
+                  clearTimeout(i);
+              }
+              document.getElementById('square-img').classList.remove('filled');
+              removeEnterAsNextView();
+            }
+          }
+        });
       }
     },
     task6:{
       title: "HUNGRINESS",
       href: "tasks/task6.html",
       js: function(){
-        let el = document.querySelector('.btn-group');
+        var el = document.querySelector('.btn-group');
         type('.title>span', 'On a scale from 1-10, rate your hunger level, 10 being<br />the hungriest.', function(){
             el.classList.remove('hide');
         });
 
 
-        let buttons = document.querySelectorAll('.btn-group div');
+        var buttons = document.querySelectorAll('.btn-group div');
         for (var i = 0; i < buttons.length; i++) {
           buttons[i].addEventListener('click',function(e){
-            let cursor = document.querySelector('.typed-cursor');
+            var cursor = document.querySelector('.typed-cursor');
+            if(cursor){
+              cursor.remove();
+            }
+            for (var i = 0; i < buttons.length; i++) {
+              buttons[i].classList.remove('active');
+            }
+            e.target.classList.add('active');
+            setTimeout(function(){
+              setEnterAsNextView(views.tasks.task16);
+            }, 1700);
+          });
+        }
+
+      }
+    },
+    task7:{
+      title: "HAPPINESS",
+      href: "tasks/task6.html",
+      js: function(){
+        var el = document.querySelector('.btn-group');
+        type('.title>span', 'On a scale from 1-10, rate your happiness level, 10 being<br />the happiest.', function(){
+            el.classList.remove('hide');
+        });
+
+
+        var buttons = document.querySelectorAll('.btn-group div');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener('click',function(e){
+            var cursor = document.querySelector('.typed-cursor');
             if(cursor){
               cursor.remove();
             }
@@ -323,9 +387,9 @@ views = {
       title: "DATE",
       href: "tasks/task12.html",
       js: function(){
-        let dateValid = false;
-        let input = document.querySelector(".input__field");
-        let el = document.getElementById('task-input');
+        var dateValid = false;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
 
         type('.title>span', 'Enter the DD/MM of your birth date.', function(){
           el.parentNode.classList.remove('hide');
@@ -345,10 +409,10 @@ views = {
             el.value = el.value + '/';
           }
           else{
-            let day = el.value.split("/")[0];
-            let month = el.value.split("/")[1];
+            var day = el.value.split("/")[0];
+            var month = el.value.split("/")[1];
             dateValid = day <= 31 && month <= 12 && month.length == 2;
-            let secondaryMessage = document.querySelector('.secondary>span');
+            var secondaryMessage = document.querySelector('.secondary>span');
             if(dateValid){
               input.classList.add('valid');
               el.onkeyup = undefined;
@@ -365,10 +429,53 @@ views = {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
 
-        let cursor = document.querySelector('.typed-cursor').cloneNode();
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
         el.onfocus = function(){
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           if(dateValid) {
+            input.classList.add('valid');
+          }
+        }
+
+        el.onblur = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'visible';
+          input.classList.remove('valid');
+        }
+      }
+    },
+    task14:{
+      title: "WORD",
+      href: "tasks/task14.html",
+      js: function(){
+        var validInput = false;
+        var timeoutId;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
+
+        input.placeholder="DOOR";
+
+        type('.title>span', 'Enter a random word.', function(){
+          el.parentNode.classList.remove('hide');
+        });
+
+
+
+        el.onkeypress = function(e){
+          if(el.value.length > 1){
+            el.onkeypress = undefined;
+            setEnterAsNextView(views.finished, true);
+          }
+        }
+
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
+        el.onfocus = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          if(validInput) {
             input.classList.add('valid');
           }
         }
@@ -383,10 +490,12 @@ views = {
       title: "LOCATION",
       href: "tasks/task16.html",
       js: function(){
-        let validInput = false;
-        let timeoutId;
-        let input = document.querySelector(".input__field");
-        let el = document.getElementById('task-input');
+        var validInput = false;
+        var timeoutId;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
+
+        input.placeholder="BUDAPEST, HUNGARY";
 
         type('.title>span', 'Enter your current location.', function(){
           el.parentNode.classList.remove('hide');
@@ -406,7 +515,7 @@ views = {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
 
-        let cursor = document.querySelector('.typed-cursor').cloneNode();
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
         el.onfocus = function(){
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           if(validInput) {
@@ -420,13 +529,62 @@ views = {
         }
       }
     },
+    task17:{
+      title: "HOUSE",
+      href: "tasks/task17.html",
+      js: function(){
+        var validInput = false;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
+
+        type('.title>span', 'Enter your flat or house number.', function(){
+          el.parentNode.classList.remove('hide');
+        });
+
+        el.onkeypress = function(e){
+
+          var charCode = e.which || e.keyCode;
+          var charStr = String.fromCharCode(charCode);
+          if (!/[0-9]/.test(charStr)) {
+              return false;
+          }
+
+        }
+        el.onkeyup = function(e){
+
+          if(el.value.length > 1){
+            el.onkeypress = undefined;
+            setEnterAsNextView(views.finished, true);
+          }
+
+        }
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
+        el.onfocus = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          if(validInput) {
+            input.classList.add('valid');
+          }
+        }
+
+        el.onblur = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'visible';
+          input.classList.remove('valid');
+        }
+
+      }
+    },
     task18:{
       title: "NUMBERS",
       href: "tasks/task18.html",
       js: function(){
-        let validInput = false;
-        let input = document.querySelector(".input__field");
-        let el = document.getElementById('task-input');
+        var validInput = false;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
 
         type('.title>span', 'Enter 5 random digits.', function(){
           el.parentNode.classList.remove('hide');
@@ -443,7 +601,7 @@ views = {
         }
         el.onkeyup = function(e){
 
-          let numbers = el.value;
+          var numbers = el.value;
           validInput = numbers.length == 5;
           if(validInput){
             input.classList.add('valid');
@@ -461,7 +619,7 @@ views = {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
 
-        let cursor = document.querySelector('.typed-cursor').cloneNode();
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
         el.onfocus = function(){
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           if(validInput) {
