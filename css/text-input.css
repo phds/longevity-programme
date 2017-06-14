@@ -10,11 +10,7 @@
 	transition: opacity 1s;
 }
 
-.input.date, .input.numbers{
-	width: 140px;
-}
-
-.input.word {
+.input.date, .input.numbers, .input.word{
 	width: 140px;
 }
 

@@ -2,13 +2,17 @@
   top:23%;
 }
 
+.body.organise{
+  bottom:28%;
+}
+
 .btn-group{
   margin-top: 15px;
   transition: opacity 1s;
   font-family: 'Roboto Mono', monospace;
 }
 
-.btn-group div {
+.btn-group.organise div {
   background-color: transparent;
   border: 1.5px solid #FF441D;
   color: #FF441D;

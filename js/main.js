@@ -35,6 +35,8 @@ function decideNextView(){
 
   if(tasksCompleted.length == 4){
     finalQuestion = true;
+    setEnterAsNextView(views.finished, finalQuestion);
+    return;
   }
 
   if(tasksCompleted.length == 0 || tasksCompleted[tasksCompleted.length - 1] > 11){
@@ -50,24 +52,29 @@ function decideNextView(){
     }
   }
 
-  setEnterAsNextView(nextView, finalQuestion);
+  setEnterAsNextView(views.tasks['task' + nextView], finalQuestion, nextView);
 }
 
-function setEnterAsNextView(nextPage, finalQuestion){
+function setEnterAsNextView(nextPage, finalQuestion, taskId){
   var secondaryMessage = document.querySelector('.secondary>span');
   secondaryMessage.classList.add('show');
   document.onkeypress = function(e){
     if(e.keyCode == 13){
-      $( ".task" ).css({"height": "auto" });
+      // $( ".task" ).css({"height": "auto" });
       document.onkeypress = undefined;
       disableGlitching();
+
+      if(taskId){
+        tasksCompleted.push(taskId);
+      }
+
       if(finalQuestion){
-        document.querySelector('#next-final').volume = 0.1;
+        document.querySelector('#next-final').volume = 0.6;
         document.querySelector('#next-final').play();
         timeoutTime = 700;
       }
       else{
-        document.querySelector('#next').volume = 0.1;
+        document.querySelector('#next').volume = 0.6;
         document.querySelector('#next').play();
         timeoutTime = 100;
       }
@@ -145,7 +152,7 @@ function sendData() {
   XHR.send(urlEncodedData);
 
   //returns the 4 seconds per number of tickets being printed
-  return randomNum*2*1000;
+  return randomNum*4*1000;
 }
 
 function setView(view){
@@ -214,7 +221,8 @@ views = {
       var str = 'Follow and answer the next 5 questions.<br/><br />Use the keypad and mouse to answer the randomly generated queries.';
       type('.message>span', str, function(){
         // var task = pickTask();
-        setEnterAsNextView(views.tasks.task1);
+        // setEnterAsNextView(views.tasks.task1);
+        decideNextView();
       })
     }
   },
@@ -234,7 +242,7 @@ views = {
     title: "PRINTING",
     href: "printing.html",
     js: function(){
-      document.querySelector('#printing').volume = 0.1
+      document.querySelector('#printing').volume = 0.5
       document.querySelector('#printing').play();
       var delaytime = sendData();
       setTimeout(function(){
@@ -265,8 +273,7 @@ views = {
       }, 2000);
     }
   },
-  tasks:{ //TODO: make the text field automatically focused
-          //TODO: fix animation on the valid class textbox (task 13)
+  tasks:{
     task1:{
       title: "FILE",
       href: "tasks/task1.html",
@@ -289,7 +296,7 @@ views = {
             if(ui.draggable.prop('id')=="page"){
               document.getElementById('page').classList.add('hide');
               setTimeout(function(){
-                setEnterAsNextView(views.tasks.task2);
+                decideNextView();
               }, 1200);
             }
           },
@@ -324,7 +331,7 @@ views = {
           el.classList.add('filled');
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           setTimeout(function(){
-            setEnterAsNextView(views.tasks.task3);
+            decideNextView();
           }, 1200);
         }
 
@@ -341,7 +348,7 @@ views = {
       title: "HEART",
       href: "tasks/task3.html",
       js: function(){
-        var el = document.querySelector('.heart');
+        var el = document.querySelector('span.heart');
         el.children[0].src = "assets/heartoutline.SVG";
 
         type('.title>span', 'Double click this icon.', function(){
@@ -354,7 +361,7 @@ views = {
           el.classList.add('filled');
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           setTimeout(function(){
-            setEnterAsNextView(views.tasks.task4);
+            decideNextView();
           }, 1200);
         }
       }
@@ -375,7 +382,7 @@ views = {
           el.classList.add('filled');
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           setTimeout(function(){
-            setEnterAsNextView(views.tasks.task5);
+            decideNextView();
           }, 1200);
         }
       }
@@ -401,13 +408,17 @@ views = {
           drop: function( event, ui ) {
             if(ui.draggable.prop('id')=="circle"){
               document.getElementById('square-img').classList.add('filled');
+              document.getElementById('circle-img').src = '/assets/circleblue.svg';
+              document.querySelector('.typed-cursor').style.visibility = 'hidden';
               setTimeout(function(){
-                setEnterAsNextView(views.tasks.task6);
+                decideNextView();
               }, 1200);
             }
           },
           out: function(event, ui){
             if(ui.draggable.prop('id')=="circle"){
+              document.getElementById('circle-img').src = '/assets/circle.svg';
+              document.querySelector('.typed-cursor').style.visibility = 'visible';
               var highestTimeoutId = setTimeout(";");
               for (var i = 0 ; i < highestTimeoutId ; i++) {
                   clearTimeout(i);
@@ -441,7 +452,7 @@ views = {
             }
             e.target.classList.add('active');
             setTimeout(function(){
-              setEnterAsNextView(views.tasks.task7);
+              decideNextView();
             }, 1700);
           });
         }
@@ -470,7 +481,7 @@ views = {
             }
             e.target.classList.add('active');
             setTimeout(function(){
-              setEnterAsNextView(views.tasks.task8);
+              decideNextView();
             }, 1700);
           });
         }
@@ -509,7 +520,7 @@ views = {
                   buttons[i].classList.add('active');
                 }
                 setTimeout(function(){
-                  setEnterAsNextView(views.tasks.task9);
+                  decideNextView();
                 }, 1700);
               }
             }
@@ -553,7 +564,7 @@ views = {
               e.target.src = "assets/sadfull.png";
             }
             setTimeout(function(){
-              setEnterAsNextView(views.tasks.task10);
+              decideNextView();
             }, 1700);
           });
         }
@@ -579,12 +590,12 @@ views = {
             e.target.classList.add('hidden');
             setTimeout(function(){
               e.target.style.display = "none";
-            }, 2000)
+            }, 1000)
             clickCounter += 1;
             if(clickCounter == icons.length){
               setTimeout(function(){
-                setEnterAsNextView(views.tasks.task11);
-              }, 1200)
+                decideNextView();
+              }, 1000)
             }
           });
         }
@@ -595,7 +606,7 @@ views = {
       href: "tasks/task11.html",
       js: function(){
         var el = document.querySelector('.terms .body');
-        type('.title>span', 'Do you accept the terms and conditions?', function(){
+        type('.title>span', 'Do you accept the terms and conditions? Click the square box to agree.', function(){
           el.classList.remove('hide');
         });
 
@@ -612,7 +623,7 @@ views = {
             checkbox.classList.add('active');
             checkbox.innerHTML = "&times;";
             setTimeout(function(){
-              setEnterAsNextView(views.tasks.task12);
+              decideNextView();
             }, 1000);
             document.querySelector('.typed-cursor').style.visibility = 'hidden';
           }
@@ -655,7 +666,7 @@ views = {
             if(dateValid){
               input.classList.add('valid');
               el.onkeyup = undefined;
-              setEnterAsNextView(views.tasks.task13);
+              decideNextView();
             }
             else {
               input.classList.remove('valid');
@@ -713,7 +724,7 @@ views = {
           if(validInput){
             input.classList.add('valid');
             el.onkeyup = undefined;
-            setEnterAsNextView(views.tasks.task14);
+            decideNextView();
           }
           else {
             input.classList.remove('valid');
@@ -764,7 +775,7 @@ views = {
         el.onkeypress = function(e){
           if(el.value.length > 1){
             el.onkeypress = undefined;
-            setEnterAsNextView(views.tasks.task15, true);
+            decideNextView();
           }
         }
 
@@ -805,7 +816,7 @@ views = {
           if(validateEmail(el.value)){
             input.classList.add('valid');
             // el.onkeyup = undefined;
-            setEnterAsNextView(views.tasks.task16);
+            decideNextView();
           }
           else {
             input.classList.remove('valid');
@@ -859,7 +870,7 @@ views = {
         el.onkeypress = function(e){
           if(el.value.length > 5){
             el.onkeypress = undefined;
-            setEnterAsNextView(views.tasks.task17, true);
+            decideNextView();
           }
         }
 
@@ -910,7 +921,7 @@ views = {
 
           if(el.value.length > 1){
             el.onkeypress = undefined;
-            setEnterAsNextView(views.tasks.task18, true);
+            decideNextView();
           }
 
         }
@@ -965,7 +976,7 @@ views = {
           if(validInput){
             input.classList.add('valid');
             el.onkeyup = undefined;
-            setEnterAsNextView(views.tasks.task19);
+            decideNextView();
           }
           else {
             input.classList.remove('valid');
@@ -1021,7 +1032,7 @@ views = {
 
           if(el.value.length > 0){
             el.onkeypress = undefined;
-            setEnterAsNextView(views.tasks.task20, true);
+            decideNextView();
           }
           else{
             removeEnterAsNextView();
@@ -1076,7 +1087,7 @@ views = {
 
           if(el.value.length > 0){
             el.onkeypress = undefined;
-            setEnterAsNextView(views.finished, true);
+            decideNextView();
           }
           else{
             removeEnterAsNextView();

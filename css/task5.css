@@ -17,17 +17,15 @@
 }
 
 #square{
-  height: 140px;
-  width: 140px;
+  width: 115px;
   position: absolute;
-  top: 10%;
+  top: 20%;
   opacity: 1;
   transition: opacity 1s;
 }
 
 .triangle {
-  height: 50px;
-  width: 50px;
+  width: 40px;
   position: absolute;
   opacity: 1;
   transition: opacity 1s;
@@ -51,8 +49,7 @@
 }
 
 #circle{
-  height: 50px;
-  width: 50px;
+  width: 40px;
   position: absolute;
   opacity: 1;
   transition: opacity 1s;

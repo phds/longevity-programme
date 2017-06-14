@@ -90,6 +90,7 @@ html, body {
   color: #DCDCEA;
   position: absolute;
   top: 25%;
+  margin-left: 9px;
 }
 
 .task .title span {
