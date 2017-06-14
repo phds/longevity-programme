@@ -211,7 +211,7 @@ views = {
       var str = 'Follow and answer the next 5 questions.<br/><br />Use the keypad and mouse to answer the randomly generated queries.';
       type('.message>span', str, function(){
         // var task = pickTask();
-        setEnterAsNextView(views.tasks.task18);
+        setEnterAsNextView(views.tasks.task1);
       })
     }
   },
