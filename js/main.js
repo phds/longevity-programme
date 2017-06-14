@@ -3,15 +3,15 @@ var timeoutId;
 function setGlitching(){
   $(document).ready(function(){
     var content = $("<div />").append($(".container").clone()).html();
-    intervalId = setInterval(function(){
-      timeoutId = setTimeout(function(){
+    setTimeout(function(){
+      setInterval(function(){
         $(".container").glitch();
         setTimeout(function(){
           $('canvas').remove();
           $('body').prepend(content);
         }, 500)
-      }, Math.floor(Math.random() * (3000 - 1000 + 1)) + 2000);
-    }, 3100);
+      }, getRandomInt(1000,4500));
+    }, 1900);
   });
 }
 
@@ -33,7 +33,7 @@ function decideNextView(){
   var nextView;
   var finalQuestion = false;
 
-  if(tasksCompleted.length == 4){
+  if(tasksCompleted.length == 5){
     finalQuestion = true;
     setEnterAsNextView(views.finished, finalQuestion);
     return;
