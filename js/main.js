@@ -143,6 +143,9 @@ function sendData() {
   XHR.open('POST', 'https://api.particle.io/v1/devices/2d0040000d47343432313031/led?access_token=dc9f5e2102aa1394e475dc5cffaf991cbb256a05');
   XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   XHR.send(urlEncodedData);
+
+  //returns the 4 seconds per number of tickets being printed
+  return randomNum*4*1000;
 }
 
 function setView(view){
@@ -233,10 +236,10 @@ views = {
     js: function(){
       document.querySelector('#printing').volume = 0.1
       document.querySelector('#printing').play();
-      sendData();
+      var delaytime = sendData();
       setTimeout(function(){
         setView(views.thankyou);
-      }, 8000);
+      }, delaytime);
     }
   },
   thankyou:{
