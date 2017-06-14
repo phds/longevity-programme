@@ -1,0 +1,71 @@
+.task.clear{
+  height: 200px;
+}
+
+.task.clear > .title {
+  top: 16%;
+}
+
+.task.clear > .body{
+  width: 80%;
+  height: 50%;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+
+.icons{
+  position: absolute;
+  height: 40px;
+  opacity: 1;
+  transition: opacity 1s;
+  visibility: visible;
+}
+
+.icons.hidden{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+
+
+.icons:nth-child(1){
+  top: 9%;
+  left: 13%;
+}
+
+.icons:nth-child(2){
+  top: 28%;
+  left: 23%;
+}
+
+.icons:nth-child(3){
+  top: 68%;
+  left: 35%;
+}
+
+.icons:nth-child(4){
+  top: 30%;
+  left: 47%;
+}
+
+.icons:nth-child(5){
+  top: 64%;
+  left: 53%;
+}
+
+.icons:nth-child(6){
+  top: 30%;
+  left: 64%;
+}
+
+.icons:nth-child(7){
+  top: 51%;
+  left: 80%;
+}
+
+.icons:nth-child(8){
+  top: 30%;
+  left: 89%;
+}

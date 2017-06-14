@@ -89,7 +89,7 @@ html, body {
 .task > .title {
   color: #DCDCEA;
   position: absolute;
-  top: 30%;
+  top: 25%;
 }
 
 .task .title span {

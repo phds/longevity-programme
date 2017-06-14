@@ -1,0 +1,40 @@
+.task.terms{
+  height: 400px;
+  width: 800px;
+}
+
+.task.terms > .title {
+  top: 8%;
+}
+
+.task.terms > .body{
+  width: 90%;
+  font-size: 5px;
+  height: 75%;
+  color: #FF441D;
+  opacity: 0.9;
+  bottom: 6%;
+  transition: opacity 0.5s;
+}
+
+.title.terms > .body {
+  height: 50%;
+  width: 80%;
+}
+
+.terms .checkbox{
+  height: 30px;
+  width: 30px;
+  border: solid 2px #FF441D;
+  border-radius: 6px;
+  margin-top: 30px;
+  position: relative;
+}
+
+.checkbox.active{
+  background-color: #FF441D;
+  color: #0000CD;
+  font-size: 44px;
+  line-height: 20px;
+  animation: glow 3s 1;
+}

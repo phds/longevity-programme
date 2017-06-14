@@ -1,0 +1,37 @@
+.task.file{
+  height: 250px;
+}
+
+.task.file > .title {
+  top: 16%;
+}
+
+.task.file > .body{
+  width: 80%;
+  height: 50%;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+
+#folder{
+  height: 60px;
+  position: absolute;
+  top: 30%;
+}
+
+#page {
+  height: 50px;
+  position: absolute;
+  right: 18%;
+  top: 20%;
+  opacity: 1;
+  transition: opacity 1s;
+  visibility: visible;
+}
+
+#page.hidden{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}

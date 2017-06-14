@@ -22,6 +22,37 @@ function disableGlitching(){
   }
 }
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+var tasksCompleted = [];
+function decideNextView(){
+  var nextView;
+  var finalQuestion = false;
+
+  if(tasksCompleted.length == 4){
+    finalQuestion = true;
+  }
+
+  if(tasksCompleted.length == 0 || tasksCompleted[tasksCompleted.length - 1] > 11){
+    nextView = getRandomInt(1,11);
+    while(tasksCompleted.includes(nextView)){
+      nextView = getRandomInt(1,11);
+    }
+  }
+  else{
+    nextView = getRandomInt(12,20);
+    while(tasksCompleted.includes(nextView)){
+      nextView = getRandomInt(12,20);
+    }
+  }
+
+  setEnterAsNextView(nextView, finalQuestion);
+}
+
 function setEnterAsNextView(nextPage, finalQuestion){
   var secondaryMessage = document.querySelector('.secondary>span');
   secondaryMessage.classList.add('show');
@@ -231,7 +262,47 @@ views = {
       }, 2000);
     }
   },
-  tasks:{
+  tasks:{ //TODO: make the text field automatically focused
+          //TODO: fix animation on the valid class textbox (task 13)
+    task1:{
+      title: "FILE",
+      href: "tasks/task1.html",
+      js: function(){
+        type('.title>span', 'Drag and drop this file into this folder.', function(){
+          var hidden = document.getElementsByClassName("hide");
+          while (hidden.length){
+            hidden[0].classList.remove("hide");
+          }
+        });
+
+        $( "#page" ).draggable({
+          containment: ".task",
+          drag: function(){
+            document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          }
+        });
+        $( "#folder" ).droppable({
+          drop: function( event, ui ) {
+            if(ui.draggable.prop('id')=="page"){
+              document.getElementById('page').classList.add('hide');
+              setTimeout(function(){
+                setEnterAsNextView(views.tasks.task2);
+              }, 1200);
+            }
+          },
+          out: function(event, ui){
+            if(ui.draggable.prop('id')=="circle"){
+              var highestTimeoutId = setTimeout(";");
+              for (var i = 0 ; i < highestTimeoutId ; i++) {
+                  clearTimeout(i);
+              }
+              document.getElementById('square-img').classList.remove('filled');
+              removeEnterAsNextView();
+            }
+          }
+        });
+      }
+    },
     task2:{
       title: "COW",
       href: "tasks/task2.html",
@@ -250,7 +321,7 @@ views = {
           el.classList.add('filled');
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           setTimeout(function(){
-            setEnterAsNextView(views.tasks.task12);
+            setEnterAsNextView(views.tasks.task3);
           }, 1200);
         }
 
@@ -267,9 +338,8 @@ views = {
       title: "HEART",
       href: "tasks/task3.html",
       js: function(){
-        var input = document.querySelector(".input__field");
         var el = document.querySelector('.heart');
-        el.firstChild().src = "assets/heartoutline.SVG";
+        el.children[0].src = "assets/heartoutline.SVG";
 
         type('.title>span', 'Double click this icon.', function(){
           el.classList.remove('hide');
@@ -281,7 +351,28 @@ views = {
           el.classList.add('filled');
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           setTimeout(function(){
-            setEnterAsNextView(views.tasks.task16);
+            setEnterAsNextView(views.tasks.task4);
+          }, 1200);
+        }
+      }
+    },
+    task4:{
+      title: "THUMBS UP",
+      href: "tasks/task4.html",
+      js: function(){
+        var el = document.querySelector('.thumb');
+        el.firstChild.src = "assets/thumboutline.png";
+        type('.title>span', 'Double click this icon.', function(){
+          el.classList.remove('hide');
+        });
+
+        el.ondblclick = function(e){
+
+          el.children[0].src = "assets/thumbfilled.png";
+          el.classList.add('filled');
+          document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          setTimeout(function(){
+            setEnterAsNextView(views.tasks.task5);
           }, 1200);
         }
       }
@@ -308,7 +399,7 @@ views = {
             if(ui.draggable.prop('id')=="circle"){
               document.getElementById('square-img').classList.add('filled');
               setTimeout(function(){
-                setEnterAsNextView(views.tasks.task16);
+                setEnterAsNextView(views.tasks.task6);
               }, 1200);
             }
           },
@@ -347,7 +438,7 @@ views = {
             }
             e.target.classList.add('active');
             setTimeout(function(){
-              setEnterAsNextView(views.tasks.task16);
+              setEnterAsNextView(views.tasks.task7);
             }, 1700);
           });
         }
@@ -376,11 +467,153 @@ views = {
             }
             e.target.classList.add('active');
             setTimeout(function(){
-              setEnterAsNextView(views.tasks.task16);
+              setEnterAsNextView(views.tasks.task8);
             }, 1700);
           });
         }
 
+      }
+    },
+    task8:{
+      title: "ORGANISE",
+      href: "tasks/task8.html",
+      js: function(){
+        var el = document.querySelector('.btn-group');
+        type('.title>span', 'Organise the numbers from 1-5.', function(){
+            el.classList.remove('hide');
+        });
+
+        $('#btn-group').sortable({
+          stop: function(){
+            var cursor = document.querySelector('.typed-cursor');
+            if(cursor){
+              cursor.remove();
+            }
+
+            var buttons = document.querySelectorAll('.btn-group div');
+
+            for (var i = 0; i < buttons.length; i++) {
+
+              if(i+1 != Number(buttons[i].getAttribute('value'))){
+                for (var j = 0; j < buttons.length; j++) {
+                  buttons[j].classList.remove('active');
+                }
+                removeEnterAsNextView();
+                break;
+              }
+              if(i == 4){
+                for (var i = 0; i < buttons.length; i++) {
+                  buttons[i].classList.add('active');
+                }
+                setTimeout(function(){
+                  setEnterAsNextView(views.tasks.task9);
+                }, 1700);
+              }
+            }
+          }
+        });
+        $('#btn-group').disableSelection();
+      }
+    },
+    task9:{
+      title: "EMOTION",
+      href: "tasks/task9.html",
+      js: function(){
+        var el = document.querySelector('.btn-group');
+        type('.title>span', 'Which is the closest face to your current emotion?', function(){
+            el.classList.remove('hide');
+        });
+
+
+        var faces = document.querySelectorAll('.btn-group img');
+        for (var i = 0; i < faces.length; i++) {
+          faces[i].addEventListener('click',function(e){
+            var cursor = document.querySelector('.typed-cursor');
+            if(cursor){
+              cursor.remove();
+            }
+            for (var i = 0; i < faces.length; i++) {
+              faces[i].classList.remove('active');
+              faces[0].src = "assets/happyoutline.png";
+              faces[1].src = "assets/neutraloutline.png";
+              faces[2].src = "assets/sadoutline.png";
+            }
+
+            e.target.classList.add('active');
+            if(e.target.id == "happy"){
+              e.target.src = "assets/happyfull.png";
+            }
+            else if(e.target.id == "neutral"){
+              e.target.src = "assets/neutralfull.png";
+            }
+            else {
+              e.target.src = "assets/sadfull.png";
+            }
+            setTimeout(function(){
+              setEnterAsNextView(views.tasks.task10);
+            }, 1700);
+          });
+        }
+
+      }
+    },
+    task10:{
+      title: "CLEAR",
+      href: "tasks/task10.html",
+      js: function(){
+        type('.title>span', 'Click each icon to close it and clear the space below.', function(){
+          var hidden = document.getElementsByClassName("hide");
+          while (hidden.length){
+            hidden[0].classList.remove("hide");
+          }
+        });
+
+        var clickCounter = 0;
+        var icons = document.querySelectorAll('.icons');
+        for (var i = 0; i < icons.length; i++) {
+          icons[i].addEventListener('click', function(e){
+            document.querySelector('.typed-cursor').style.visibility = 'hidden';
+            e.target.classList.add('hidden');
+            setTimeout(function(){
+              e.target.style.display = "none";
+            }, 2000)
+            clickCounter += 1;
+            if(clickCounter == icons.length){
+              setTimeout(function(){
+                setEnterAsNextView(views.tasks.task11);
+              }, 1200)
+            }
+          });
+        }
+      }
+    },
+    task11:{
+      title: "T&C",
+      href: "tasks/task11.html",
+      js: function(){
+        var el = document.querySelector('.terms .body');
+        type('.title>span', 'Do you accept the terms and conditions?', function(){
+          el.classList.remove('hide');
+        });
+
+        var checkbox = el.querySelector('.checkbox');
+        checkbox.addEventListener('click', function(){
+
+          if(checkbox.classList.contains('active')){
+            checkbox.classList.remove('active');
+            checkbox.innerHTML = "";
+            removeEnterAsNextView();
+            document.querySelector('.typed-cursor').style.visibility = 'visible';
+          }
+          else{
+            checkbox.classList.add('active');
+            checkbox.innerHTML = "&times;";
+            setTimeout(function(){
+              setEnterAsNextView(views.tasks.task12);
+            }, 1000);
+            document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          }
+        });
       }
     },
     task12:{
@@ -416,7 +649,7 @@ views = {
             if(dateValid){
               input.classList.add('valid');
               el.onkeyup = undefined;
-              setEnterAsNextView(views.tasks.task6);
+              setEnterAsNextView(views.tasks.task13);
             }
             else {
               input.classList.remove('valid');
@@ -443,6 +676,62 @@ views = {
         }
       }
     },
+    task13:{
+      title: "TELEPHONE",
+      href: "tasks/task13.html",
+      js: function(){
+        var validInput = false;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
+
+        type('.title>span', 'Enter the 5 first digits of your phone number.', function(){
+          el.parentNode.classList.remove('hide');
+        });
+
+        el.onkeypress = function(e){
+
+          var charCode = e.which || e.keyCode;
+          var charStr = String.fromCharCode(charCode);
+          if (!/[0-9]/.test(charStr) || el.value.length > 4) {
+              return false;
+          }
+
+        }
+        el.onkeyup = function(e){
+
+          var numbers = el.value;
+          validInput = numbers.length == 5;
+          if(validInput){
+            input.classList.add('valid');
+            el.onkeyup = undefined;
+            setEnterAsNextView(views.tasks.task14);
+          }
+          else {
+            input.classList.remove('valid');
+            removeEnterAsNextView();
+          }
+
+        }
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
+        el.onfocus = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          if(validInput) {
+            input.classList.add('valid');
+          }
+        }
+
+        el.onblur = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'visible';
+          input.classList.remove('valid');
+        }
+
+      }
+    },
     task14:{
       title: "WORD",
       href: "tasks/task14.html",
@@ -463,7 +752,7 @@ views = {
         el.onkeypress = function(e){
           if(el.value.length > 1){
             el.onkeypress = undefined;
-            setEnterAsNextView(views.finished, true);
+            setEnterAsNextView(views.tasks.task15, true);
           }
         }
 
@@ -476,6 +765,52 @@ views = {
         el.onfocus = function(){
           document.querySelector('.typed-cursor').style.visibility = 'hidden';
           if(validInput) {
+            input.classList.add('valid');
+          }
+        }
+
+        el.onblur = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'visible';
+          input.classList.remove('valid');
+        }
+      }
+    },
+    task15:{
+      title: "EMAIL",
+      href: "tasks/task15.html",
+      js: function(){
+        var dateValid = false;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
+
+        type('.title>span', 'Enter any email in the format _____@__.__.', function(){
+          el.parentNode.classList.remove('hide');
+        });
+        el.onkeyup = function(e){
+          if(validateEmail(el.value)){
+            input.classList.add('valid');
+            // el.onkeyup = undefined;
+            setEnterAsNextView(views.tasks.task16);
+          }
+          else {
+            input.classList.remove('valid');
+            removeEnterAsNextView();
+          }
+        }
+
+        function validateEmail(email) {
+          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+        }
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
+        el.onfocus = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          if(dateValid) {
             input.classList.add('valid');
           }
         }
@@ -506,7 +841,7 @@ views = {
         el.onkeypress = function(e){
           if(el.value.length > 5){
             el.onkeypress = undefined;
-            setEnterAsNextView(views.finished, true);
+            setEnterAsNextView(views.tasks.task17, true);
           }
         }
 
@@ -554,7 +889,7 @@ views = {
 
           if(el.value.length > 1){
             el.onkeypress = undefined;
-            setEnterAsNextView(views.finished, true);
+            setEnterAsNextView(views.tasks.task18, true);
           }
 
         }
@@ -606,10 +941,114 @@ views = {
           if(validInput){
             input.classList.add('valid');
             el.onkeyup = undefined;
-            setEnterAsNextView(views.tasks.task2);
+            setEnterAsNextView(views.tasks.task19);
           }
           else {
             input.classList.remove('valid');
+            removeEnterAsNextView();
+          }
+
+        }
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
+        el.onfocus = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          if(validInput) {
+            input.classList.add('valid');
+          }
+        }
+
+        el.onblur = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'visible';
+          input.classList.remove('valid');
+        }
+
+      }
+    },
+    task19:{
+      title: "LETTERS",
+      href: "tasks/task19.html",
+      js: function(){
+        var validInput = false;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
+
+        type('.title>span', 'Enter the number of letters in your first name.', function(){
+          el.parentNode.classList.remove('hide');
+        });
+
+        el.onkeypress = function(e){
+
+          var charCode = e.which || e.keyCode;
+          var charStr = String.fromCharCode(charCode);
+          if (!/[0-9]/.test(charStr)) {
+              return false;
+          }
+
+        }
+        el.onkeyup = function(e){
+
+          if(el.value.length > 0){
+            el.onkeypress = undefined;
+            setEnterAsNextView(views.tasks.task20, true);
+          }
+          else{
+            removeEnterAsNextView();
+          }
+
+        }
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        var cursor = document.querySelector('.typed-cursor').cloneNode();
+        el.onfocus = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'hidden';
+          if(validInput) {
+            input.classList.add('valid');
+          }
+        }
+
+        el.onblur = function(){
+          document.querySelector('.typed-cursor').style.visibility = 'visible';
+          input.classList.remove('valid');
+        }
+
+      }
+    },
+    task20:{
+      title: "SHOE",
+      href: "tasks/task20.html",
+      js: function(){
+        var validInput = false;
+        var input = document.querySelector(".input__field");
+        var el = document.getElementById('task-input');
+
+        type('.title>span', 'Enter your shoe size.', function(){
+          el.parentNode.classList.remove('hide');
+        });
+
+        el.onkeypress = function(e){
+
+          var charCode = e.which || e.keyCode;
+          var charStr = String.fromCharCode(charCode);
+          if (!/[0-9]/.test(charStr)) {
+              return false;
+          }
+
+        }
+        el.onkeyup = function(e){
+
+          if(el.value.length > 0){
+            el.onkeypress = undefined;
+            setEnterAsNextView(views.finished, true);
+          }
+          else{
             removeEnterAsNextView();
           }
 
