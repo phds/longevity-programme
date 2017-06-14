@@ -119,8 +119,8 @@ function sendData() {
   var urlEncodedDataPairs = [];
   var name;
 
-  //random number between 3 and 10
-  var randomNum = Math.floor(Math.random() * 10) + 3;
+  //random number between 1 and 5
+  var randomNum = Math.floor(Math.random() * 5) + 1;
   var data= {
     arg: randomNum
   }
@@ -626,6 +626,9 @@ views = {
 
         type('.title>span', 'Enter the DD/MM of your birth date.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
 
         el.onkeypress = function(e){
@@ -686,6 +689,9 @@ views = {
 
         type('.title>span', 'Enter the 5 first digits of your phone number.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
 
         el.onkeypress = function(e){
@@ -745,6 +751,9 @@ views = {
 
         type('.title>span', 'Enter a random word.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
 
 
@@ -785,6 +794,9 @@ views = {
 
         type('.title>span', 'Enter any email in the format _____@__.__.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
         el.onkeyup = function(e){
           if(validateEmail(el.value)){
@@ -834,6 +846,9 @@ views = {
 
         type('.title>span', 'Enter your current location.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
 
 
@@ -874,6 +889,9 @@ views = {
 
         type('.title>span', 'Enter your flat or house number.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
 
         el.onkeypress = function(e){
@@ -923,6 +941,9 @@ views = {
 
         type('.title>span', 'Enter 5 random digits.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
 
         el.onkeypress = function(e){
@@ -979,6 +1000,9 @@ views = {
 
         type('.title>span', 'Enter the number of letters in your first name.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
 
         el.onkeypress = function(e){
@@ -1031,6 +1055,9 @@ views = {
 
         type('.title>span', 'Enter your shoe size.', function(){
           el.parentNode.classList.remove('hide');
+          setTimeout(function(){
+            input.focus();
+          }, 2000);
         });
 
         el.onkeypress = function(e){
