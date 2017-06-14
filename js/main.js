@@ -145,7 +145,7 @@ function sendData() {
   XHR.send(urlEncodedData);
 
   //returns the 4 seconds per number of tickets being printed
-  return randomNum*4*1000;
+  return randomNum*2*1000;
 }
 
 function setView(view){
