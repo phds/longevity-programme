@@ -169,17 +169,6 @@ function setView(view){
 }
 
 views = {
-  loading:{
-    title: "LOADING",
-    href: "loading.html",
-    js: function(){
-      document.querySelector('#music').volume = 0.1;
-      document.querySelector('#music').play();
-      setTimeout(function(){
-        setView(views.welcome);
-      },6000)
-    }
-  },
   welcome:{
     title: "WELCOME",
     href: "welcome.html",
@@ -210,8 +199,19 @@ views = {
         setGlitching();
       }, 3600);
       setTimeout(function(){
-        setEnterAsNextView(views.instructions);
+        setEnterAsNextView(views.loading);
       }, 3000);
+    }
+  },
+  loading:{
+    title: "LOADING",
+    href: "loading.html",
+    js: function(){
+      document.querySelector('#music').volume = 0.1;
+      document.querySelector('#music').play();
+      setTimeout(function(){
+        setView(views.instructions);
+      },6000)
     }
   },
   instructions:{
@@ -266,7 +266,8 @@ views = {
           document.querySelector('#thankyou').volume = 0.4;
           document.querySelector('#thankyou').play();
           setTimeout(function(){
-            window.location.href = 'index.html';
+            // window.location.href = '';
+            window.location.reload(true);
           }, 1400)
         },3500)
 

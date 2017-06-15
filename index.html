@@ -2,29 +2,44 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>POWER</title>
+    <title>LONGEVITY</title>
     <link rel="icon" href="assets/favicon.png">
-    <link rel="stylesheet" href="css/power.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/typed.css">
+    <link rel="stylesheet" href="css/text-input.css">
+    <link rel="stylesheet" href="css/task2.css">
+    <link rel="stylesheet" href="css/task3.css">
+    <link rel="stylesheet" href="css/task4.css">
+    <link rel="stylesheet" href="css/task6.css">
+    <link rel="stylesheet" href="css/task5.css">
+    <link rel="stylesheet" href="css/task11.css">
+    <link rel="stylesheet" href="css/task8.css">
+    <link rel="stylesheet" href="css/task9.css">
+    <link rel="stylesheet" href="css/task1.css">
+    <link rel="stylesheet" href="css/task10.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
   </head>
   <body>
-    <div class="content hide">
-      <img src="assets/power-button-white.svg" alt="">
-      <span>CLICK THE BUTTON TO BEGIN</span>
-    </div>
+    <audio id="music" preload="auto" src="audio/music/tetris.mp3" autobuffer loop="true" autoplay="true"\>
+    <audio id="welcome" preload="auto" src="audio/sfx/welcome.mp3" autobuffer\>
+    <audio id="next" preload="auto" src="audio/sfx/next.mp3" autobuffer\>
+    <audio id="next-final" preload="auto" src="audio/sfx/last.mp3" autobuffer\>
+    <audio id="printing" preload="auto" src="audio/sfx/printing.mp3" autobuffer\>
+    <audio id="thankyou" preload="auto" src="audio/sfx/thankyou.mp3" autobuffer\>
+
     <script src="js/html2canvas.js" charset="utf-8"></script>
     <script src="js/jquery-1.7.1.min.js" charset="utf-8"></script>
     <script src="js/glitch.js" charset="utf-8"></script>
+    <script src="js/typed.js" charset="utf-8"></script>
+    <script src="js/jquery-ui.min.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
     <script type="text/javascript">
-      setTimeout(function(){
-        document.querySelector('.content.hide').classList.remove('hide');
-      }, 2000)
-      document.querySelector('img').addEventListener('click', function(){
-        document.querySelector('.content').classList.add('flicker');
-        document.querySelector('img').classList.add('clicked');
-        setTimeout(function(){
-          window.location.href='boot.html';
-        }, 3000)
-      });
+    document.addEventListener("DOMContentLoaded", function(event) {
+      setView(views.welcome);
+      // setView(views.tasks.task5)
+    });
     </script>
   </body>
 </html>
