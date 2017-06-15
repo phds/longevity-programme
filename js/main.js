@@ -40,15 +40,15 @@ function decideNextView(){
   }
 
   if(tasksCompleted.length == 0 || tasksCompleted[tasksCompleted.length - 1] > 11){
-    nextView = getRandomInt(1,11);
+    nextView = getRandomInt(1,12);
     while(tasksCompleted.includes(nextView) || nextView == 5 || nextView == 10){
-      nextView = getRandomInt(1,11);
+      nextView = getRandomInt(1,12);
     }
   }
   else{
-    nextView = getRandomInt(12,20);
+    nextView = getRandomInt(12,21);
     while(tasksCompleted.includes(nextView)){
-      nextView = getRandomInt(12,20);
+      nextView = getRandomInt(12,21);
     }
   }
 
@@ -127,7 +127,7 @@ function sendData() {
   var name;
 
   //random number between 1 and 5
-  var randomNum = getRandomInt(1,5);
+  var randomNum = getRandomInt(1,6);
   var data= {
     arg: randomNum
   }
