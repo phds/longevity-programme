@@ -41,7 +41,7 @@ function decideNextView(){
 
   if(tasksCompleted.length == 0 || tasksCompleted[tasksCompleted.length - 1] > 11){
     nextView = getRandomInt(1,11);
-    while(tasksCompleted.includes(nextView)){
+    while(tasksCompleted.includes(nextView) || nextView == 5 || nextView == 10){
       nextView = getRandomInt(1,11);
     }
   }
