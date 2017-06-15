@@ -10,7 +10,7 @@ function setGlitching(){
           $('canvas').remove();
           $('body').prepend(content);
         }, 500)
-      }, getRandomInt(1000,4500));
+      }, 3000);
     }, 1900);
   });
 }
@@ -397,7 +397,12 @@ views = {
             hidden[0].classList.remove("hide");
           }
         });
-
+        document.querySelector('#circle-img').src = "/assets/circle.svg";
+        document.querySelector('#square-img').src = "/assets/square.svg";
+        var triangles = document.querySelectorAll('.triangle');
+        for (var i = 0; i < triangles.length; i++) {
+          triangles[i].children[0].src = "/assets/triangle.svg";
+        }
         $( "#circle" ).draggable({
           containment: ".task"
         });
@@ -584,7 +589,16 @@ views = {
 
         var clickCounter = 0;
         var icons = document.querySelectorAll('.icons');
+        icons[0].src = "/assets/circle.svg";
+        icons[1].src = "/assets/triangle.svg";
+        icons[2].src = "/assets/square1.png";
+        icons[3].src = "/assets/heartfull.SVG";
+        icons[4].src = "/assets/folder.png";
+        icons[5].src = "/assets/square2.png";
+        icons[6].src = "/assets/thumbfilled.png";
+        icons[7].src = "/assets/cowfull.SVG";
         for (var i = 0; i < icons.length; i++) {
+
           icons[i].addEventListener('click', function(e){
             document.querySelector('.typed-cursor').style.visibility = 'hidden';
             e.target.classList.add('hidden');
