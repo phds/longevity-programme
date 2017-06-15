@@ -32,7 +32,7 @@ var tasksCompleted = [];
 function decideNextView(){
   var nextView;
   var finalQuestion = false;
-
+  console.log(tasksCompleted)
   if(tasksCompleted.length == 5){
     finalQuestion = true;
     setEnterAsNextView(views.finished, finalQuestion);
@@ -127,7 +127,7 @@ function sendData() {
   var name;
 
   //random number between 1 and 5
-  var randomNum = Math.floor(Math.random() * 5) + 1;
+  var randomNum = getRandomInt(1,5);
   var data= {
     arg: randomNum
   }
