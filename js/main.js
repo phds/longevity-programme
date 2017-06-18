@@ -267,7 +267,7 @@ views = {
           document.querySelector('#thankyou').play();
           setTimeout(function(){
             // window.location.href = '';
-            window.location.reload(true);
+            window.location.reload(false);
           }, 1400)
         },3500)
 
@@ -934,7 +934,7 @@ views = {
         }
         el.onkeyup = function(e){
 
-          if(el.value.length > 1){
+          if(el.value.length > 0){
             el.onkeypress = undefined;
             decideNextView();
           }

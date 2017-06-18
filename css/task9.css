@@ -8,8 +8,12 @@
   font-family: 'Roboto Mono', monospace;
 }
 
-.btn-group > img {
-  width: 62px;
+.body.emotion {
+  bottom: 23%;
+}
+
+.btn-group.emotion > img {
+  width: 47px;
   float: left;
   margin: 0 21px;
   cursor: pointer;
