@@ -69,13 +69,17 @@ function setEnterAsNextView(nextPage, finalQuestion, taskId){
       }
 
       if(finalQuestion){
-        document.querySelector('#next-final').volume = 0.6;
-        document.querySelector('#next-final').play();
+        if(isSoundOn){
+          document.querySelector('#next-final').volume = EFFECTS_VOLUME;
+          document.querySelector('#next-final').play();
+        }
         timeoutTime = 700;
       }
       else{
-        document.querySelector('#next').volume = 0.6;
-        document.querySelector('#next').play();
+        if(isSoundOn){
+          document.querySelector('#next').volume = EFFECTS_VOLUME;
+          document.querySelector('#next').play();
+        }
         timeoutTime = 100;
       }
 
@@ -120,40 +124,36 @@ function type(querySelector, str, cb, preStringTyped){
   });
 }
 
-function sendData() {
-  var XHR = new XMLHttpRequest();
-  var urlEncodedData = "";
-  var urlEncodedDataPairs = [];
-  var name;
+const MUSIC_VOLUME = 0.1;
+const EFFECTS_VOLUME = 0.4;
 
-  //random number between 1 and 5
-  var randomNum = getRandomInt(1,6);
-  var data= {
-    arg: randomNum
-  }
-
-  for(name in data) {
-    urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
-  }
-
-  urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
-
-  XHR.addEventListener('load', function(event) {
-    console.log('Yeah! Data sent and response loaded.');
-    console.log(event);
-  });
-
-  XHR.addEventListener('error', function(event) {
-    console.log('Oups! Something goes wrong.');
-  });
-
-  XHR.open('POST', 'https://api.particle.io/v1/devices/2d0040000d47343432313031/led?access_token=dc9f5e2102aa1394e475dc5cffaf991cbb256a05');
-  XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  XHR.send(urlEncodedData);
-
-  //returns the 4 seconds per number of tickets being printed
-  return randomNum*4*1000;
+var audioToggle = document.getElementById('audioToggle')
+audioToggle.onclick = function(ev){
+  audioToggle.blur();
+  audioToggle.classList.toggle('mute');
+  toggleGlobalVolume();
 }
+
+var isSoundOn = false;
+function toggleGlobalVolume(){
+  audioElements = document.getElementsByTagName('audio');
+
+  if (isSoundOn){
+    for (var i = 0; i < audioElements.length; i++) {
+      audioElements[i].volume = 0;
+    }
+
+    isSoundOn = false;
+  }
+  else{
+    for (var i = 0; i < audioElements.length; i++) {
+      audioElements[i].volume = EFFECTS_VOLUME;
+    }
+    document.getElementById('music').volume = MUSIC_VOLUME;
+    isSoundOn = true;
+  }
+}
+
 
 function setView(view){
   $.ajax({
@@ -173,7 +173,9 @@ views = {
     title: "WELCOME",
     href: "welcome.html",
     js: function(){
-      document.querySelector('#welcome').volume = 0.1;
+      document.querySelector('#music').volume = 0;
+      document.querySelector('#music').play();
+      document.querySelector('#welcome').volume = 0;
       document.querySelector('#welcome').play();
       setTimeout(function(){
         document.querySelector('.primary>.text').classList.remove('fade-in');
@@ -181,7 +183,7 @@ views = {
         document.querySelector('.primary>.text').classList.remove('show');
 
         setGlitching();
-      }, 3600);
+      }, 1900);
       setTimeout(function(){
         setEnterAsNextView(views.headphones);
       }, 3000);
@@ -207,7 +209,6 @@ views = {
     title: "LOADING",
     href: "loading.html",
     js: function(){
-      document.querySelector('#music').volume = 0.1;
       document.querySelector('#music').play();
       setTimeout(function(){
         setView(views.instructions);
@@ -242,12 +243,13 @@ views = {
     title: "PRINTING",
     href: "printing.html",
     js: function(){
-      document.querySelector('#printing').volume = 0.5
-      document.querySelector('#printing').play();
-      var delaytime = sendData();
+      if(isSoundOn){
+        document.querySelector('#printing').volume = EFFECTS_VOLUME;
+        document.querySelector('#printing').play();
+      }
       setTimeout(function(){
         setView(views.thankyou);
-      }, delaytime);
+      }, 4000);
     }
   },
   thankyou:{
@@ -263,13 +265,11 @@ views = {
           document.querySelector('#music').pause();
 
           $(".container").glitch();
-          document.querySelector('#thankyou').volume = 0.4;
-          document.querySelector('#thankyou').play();
-          setTimeout(function(){
-            // window.location.href = '';
-            window.location.reload(false);
-          }, 1400)
-        },3500)
+          if(isSoundOn){
+            document.querySelector('#thankyou').volume = EFFECTS_VOLUME;
+            document.querySelector('#thankyou').play();
+          }
+        },3500);
 
       }, 2000);
     }
